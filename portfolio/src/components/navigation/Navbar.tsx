@@ -59,20 +59,14 @@ function ResponsiveAppBar() {
             <Button className='pages-button' key="Home" sx={{ my: 2, color: 'white', display: 'block' }}>Home</Button>
           </Link>
 
-
+          <Link activeClass='active' className='page-link' smooth={true} spy={true} offset={50} duration={1000} to="projects">
+            <Button className='pages-button' key="Projects" sx={{ my: 2, color: 'white', display: 'block' }}>Projects</Button>
+          </Link>
 
 
           <Link activeClass='active' className='page-link' smooth={true} spy={true} offset={-120} duration={1000} to="about-me">
             <Button className='pages-button' key="About Me" sx={{ my: 2, color: 'white', display: 'block' }}>About Me</Button>
           </Link>
-
-
-
-          <Link activeClass='active' className='page-link' smooth={true} spy={true} offset={-120} duration={1000} to="projects">
-            <Button className='pages-button' key="Projects" sx={{ my: 2, color: 'white', display: 'block' }}>Projects</Button>
-          </Link>
-
-
 
           <Link activeClass='active' className='page-link' smooth={true} spy={true} offset={-280} duration={1000} to="skills">
             <Button className='pages-button' key="Skills" sx={{ my: 2, color: 'white', display: 'block' }}>Skills</Button>

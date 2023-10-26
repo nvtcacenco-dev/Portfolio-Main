@@ -21,7 +21,7 @@
     padding-right: 5vw;
     padding-top: 0.5vh;
     padding-bottom: 0.5vh;
-    background-color: var(--light-shade)!important;
+    background-color: var(--dark-shade)!important;
     position: fixed!important;
     transition: all 200ms ease!important;
     box-shadow: 0px 0px 10px rgba(0,0,0,.1);
@@ -54,13 +54,13 @@
     background-color: transparent;
     font-family: 'Gugi', cursive;
     font-size: clamp(1.2rem, 0.5vw + 1.2rem, 20rem);
-    color: var(--dark-shade);
+    color: var(--main-clr);
     cursor: pointer;
     user-select: none;
     transition: all 0.5s;
     border-radius: 33%;
-    border-left: 0.5rem solid var(--dark-shade);
-    border-right: 0.5rem solid var(--dark-shade);
+    border-left: 0.5rem solid var(--light-shade);
+    border-right: 0.5rem solid var(--light-shade);
     border-top: 0.5rem solid transparent;
     border-bottom: 0.5rem solid transparent;
 }
@@ -133,7 +133,7 @@
 
 
 a .pages-button{
-    color: var(--dark-shade);
+    color: var(--light-shade);
 }
 a.active .pages-button{
     color: var(--main-clr);
@@ -179,7 +179,7 @@ a.active .pages-button{
     font-size: 2rem!important;
     border: 2px solid transparent!important;
     border-radius: 100%!important;
-    color: var(--dark-shade)!important;
+    color: var(--light-shade)!important;
     background-color: transparent!important;
     box-shadow: none!important;
     position: relative;  
@@ -194,7 +194,7 @@ a.active .pages-button{
   }
 
   .icon-button:hover{
-    color: var(--dark-shade)!important;
+    color: var(--light-shade)!important;
   }
 
   .icon-button::before, .icon-button::after{

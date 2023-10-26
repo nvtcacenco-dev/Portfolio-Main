@@ -153,7 +153,7 @@
 }
 
 .skills-card:nth-child(3) .skills-card-summary .card-img:nth-child(1) {
-    background-color: var(--main-clr);
+    background-color: #e4c128;
 }
 
 .skills-tag {

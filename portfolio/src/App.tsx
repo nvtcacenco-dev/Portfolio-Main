@@ -19,11 +19,11 @@ function App() {
         <Element className='home content-section' name='home'>
             <Description/>
         </Element>
-        <Element className='about-me content-section' name='about-me'>
-          <About/>
-        </Element>
         <Element className='projects content-section' name='projects'>
           <Projects/>
+        </Element>
+        <Element className='about-me content-section' name='about-me'>
+          <About/>
         </Element>
         <Element className='skills-section content-section' name='skills'>
           <Skills/>

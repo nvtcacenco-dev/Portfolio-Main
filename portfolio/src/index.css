@@ -11,13 +11,14 @@
   --gradient-db-lp: linear-gradient(to left, var(--dark-blue), var(--light-purple)) 1;
   --bg-color: #1f1f1f;
   
-  --light-shade: #fffffe;
+  --light-shade: #fff0f2;
   --light-accent: #009b4d;
   --light-accent2: #131416ad; 
-  --main-clr: #e7b900;
+  --main-clr: #d3374c;
   --main-clr-faded: #e6784d;
-  --dark-accent: #6f6b80;
-  --dark-shade: #0f0e17; 
+  --dark-accent: #cfc4c5;
+  --dark-accent2: #cfc4c531;
+  --dark-shade: #0a0909; 
 
 
   
@@ -31,7 +32,7 @@
   --txtsize-h2-min: 1rem;
   --txtsize-h2-max: 7.5rem;
 
-  --btn-border-size: clamp(3px, 1vw + 1px, 0.2vw);
+  --btn-border-size: clamp(2px, 2px + 0.1vw, 5vw);
 }
 
 html{
@@ -76,7 +77,7 @@ h1,h2,h3,h4,h5,h6, p{
 h1{
   font-size: clamp(var(--txtsize-title-min), 1.25vw + 1.75rem, var(--txtsize-title-max));
   font-weight: 700;
-  color: var(--dark-shade);
+  color: var(--light-shade);
   
   letter-spacing: 0.02em!important;
 }
@@ -85,7 +86,7 @@ h1{
 h2{
   font-size: clamp(var(--txtsize-h2-min), 1vw + 1rem, var(--txtsize-h2-max)) !important;
   font-weight: 500;
-  color: var(--dark-shade);
+  color: var(--light-shade);
   
   letter-spacing: 0.01em!important;
 }

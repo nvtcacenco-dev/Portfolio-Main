@@ -99,29 +99,31 @@
 .fill2:before {
     content: "";
     position: absolute;
-    background: var(--light-shade);
+    background: var(--dark-shade);
     bottom: 100%;
     left: 0;
     right: 0;
     top: 0;
     z-index: -1;
     transition: bottom 200ms ease-in;
-    color: var(--dark-shade) !important;
+    color: var(--light-shade) !important;
     
 }
 .fill2{
     color: var(--light-shade) !important;
+    background-color: var(--dark-shade);
 }
 .fill2:hover{
-    color: var(--dark-shade) !important;
+    color: var(--light-shade) !important;
+    background-color: var(--dark-shade);
 }
 
 .fill2:hover:before {
     bottom: 0;
     border: none !important;
-    color: var(--dark-shade) !important;
+    color: var(--light-shade) !important;
 
-    
+    background-color: var(--dark-shade);
 }
 
 .open-cv-icon{

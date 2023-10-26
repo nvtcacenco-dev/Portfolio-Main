@@ -7,6 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+   
     
 }
 
@@ -31,16 +32,99 @@
 }
 
 .card-small{
-    flex-basis: 35%;
+    flex-basis: 40%;
+    display: flex;
+    aspect-ratio: 1.45455/1;
+    
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
 }
 .card-big{
     flex-basis: 55%;
+    display: flex;
+    aspect-ratio: 2/1;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    
+}
+.card-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    position: relative;
+    
+    cursor: pointer;
+    
+    
+}
+
+.card-media{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: transparent;
+    
+    background-position: center;
+    background-size:120%;
+    background-repeat: no-repeat;
+    z-index: 0;
+    transition: all 600ms ease-in-out; 
+    will-change: transform;
+    -moz-transition: all .6s ease-in-out;
+}
+
+.card-title, .card-btn-container{
+    flex-basis: 80%;
+    
+    transform: translateX(-500%);
+    z-index: 1;
+}
+
+.card-title{
+    transition: all 750ms ease-in-out;
+    color: var(--light-shade);
+}
+
+.card-btn-container{
+    transition: all 1000ms ease-in-out !important;
+}
+
+
+
+.card-actions{
+    position: absolute;
+    top: 50;
+    z-index: 1;
+}
+
+.card-big:hover, .card-small:hover{
+    .card-media{
+        transform: scale(105%);
+        -moz-transform: scale(1.05) ;
+        will-change: transform;
+        filter: blur(5px) brightness(25%);
+       
+        
+    }
+
+    
+
+    .card-title,  .card-btn-container{
+        
+        
+        transform: translateX(0%);
+    }
 }
 
 .card-big, .card-small{
     flex-grow: 0;
     border-radius: 0.75rem !important;
-    background-color: var(--light-shade) !important;
+    background-color: transparent !important;
 }
 
 .card-media{
@@ -61,52 +145,33 @@
 
 #project1-media{
     background-image: url("../../../img/placeholder1.jpg");
-    background-position:-35%;
-    background-size:80%;
-    background-repeat: no-repeat;
+    
 }
 
 #project2-media{
     background-image: url("../../../img/placeholder2.jpg");
-    background-position:-75%;
-    background-size:90%;
-    background-repeat: no-repeat;
+   
 }
 
 #project3-media{
     background-image: url("../../../img/placeholder3.jpg");
-    background-position:-75%;
-    background-size:90%;
-    background-repeat: no-repeat;
+    
 }
 
 
 #project4-media{
     background-image: url("../../../img/placeholder4.jpg");
-    background-position:-20%;
-    background-size:70%;
-    background-repeat: no-repeat;
+    
 }
 
-.project-title{
-    position: absolute;
-    width: 100%;
-    height: 15%;
-    background-color: #000000ad;
-    bottom: 0; 
-    display: flex;
-    align-items: center;
-    padding-inline-start: 1rem;
-}
 
-.project-title h5{
-    color: var(--light-shade);
-}
+
+
 
 
 
 .project-btn{
-    color: var(--dark-shade) !important;
+    color: var(--light-shade) !important;
     border: solid 2px transparent !important;
     border-radius: 0.25rem !important;
 }

@@ -70,9 +70,11 @@ function DescriptionBox() {
                 
                 <h6 className='welcome-tag'> &#8212; Hello, I am</h6>
                 <h1 className='description-title'>Nicolae Tcacenco
-                    <div className='wrap'><h1 className='typing-text'>{text}</h1>
+                    
+                </h1>
+                <div className='wrap'><h1 className='typing-text'>{text}</h1>
                     <div className='typing-divider' style={{ visibility: visibility }}>K</div>
-                    </div> </h1>
+                    </div> 
                 <h4 className='description-tag'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </h4>
@@ -89,7 +91,7 @@ function DescriptionBox() {
             </section>
 
             <section className='scroll-banner'>
-                <Link activeClass='active' className='scroll-link' smooth={true} spy={true} offset={-120} duration={1000} to="about-me">
+                <Link activeClass='active' className='scroll-link' smooth={true} spy={true} offset={-120} duration={1000} to="projects">
                     <div className='arrow-container'>
                         <span className="arrow right"></span>
                     </div>

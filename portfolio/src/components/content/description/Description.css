@@ -14,11 +14,7 @@
     border-bottom-right-radius: 1rem;
 }
 
-@media (max-width: 899px){
-    .brand-clr-box{
-        visibility: visible;
-    }
-}
+
 
 
 /* DESCRIPTION------------------------- */
@@ -29,28 +25,30 @@
 }
 
 .welcome-tag {
-    font-size: clamp(0.75rem, 0.1vw + 0.75rem, 2rem);
+    font-size: clamp(0.75rem, 0.2vw + 0.75rem, 2rem);
     font-weight: 600;
     margin: 0;
-    color: var(--light-accent);
+    color: var(--main-clr);
     text-transform: uppercase;
     letter-spacing: 0.375em;
 }
 
 .description-container {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     
     min-height: 100vh;
     padding-left: 15vw;
     padding-right: 15vw;
     position: relative;
     background-color: transparent;
-    background-image: url('../../../img/abstract_bg3.svg');
+    background-image: url('../../../img/bg2.png');
     background-position: center;
     background-size: cover; 
-    background-repeat: no-repeat;
-    justify-content: space-evenly;
+    background-repeat: no-repeat; 
+    flex-wrap: wrap;
+    justify-content: center;
+        
 
 }
 
@@ -58,28 +56,10 @@
 @media (max-width: 1020px) {
 
     .description-container {
-        
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: flex-end;
-        min-height: 100vh;
         padding-left: 2vw !important;
         padding-right: 2vw !important;
 
-    }
-
-    .description {
-        min-width: 100% !important;
-        text-align: center !important;
-        align-items: center !important;
-    }
-
-    .contact-btn-container {
-        align-self: flex-start;
-        flex-direction: row!important;
-        column-gap: 1rem;
-        flex-wrap: wrap;
-    }
+    }    
 }
 
 
@@ -87,8 +67,10 @@
     display: flex;
     flex-direction: column;
     background-color: transparent;
-    text-align: start;
-    max-width: 75%;
+    
+    min-width: 100% !important;
+    text-align: center !important;
+    align-items: center !important;
     
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -100,34 +82,29 @@
 
 .description-title {
     margin-top: 0;
-    margin-bottom: 1.2rem;
+    margin-bottom: -1rem;
+    font-size: clamp(var(--txtsize-title-min), 3vw + 1.75rem, var(--txtsize-title-max));
 }
 
-@media (max-width:580px){
-    .description-tag{
-      text-align: center;
-      align-self: center;
-    }
 
-    .description-container{
-        justify-content: center;
-    }
-  }
 
 .description-tag {
     margin: 0;
+    margin-top: 1.2rem;
     margin-bottom: 2.4rem;
     max-width: 80%;
     font-size: clamp(1rem, 1rem + 0.25vw, 3rem);
+    text-align: center;
+    align-self: center;
 }
 
 .typing-divider {
     
     width: clamp(0.05rem, 0.1vw + 0.1rem, 0.75rem);
-    
+    height: 4.938rem;
     color: transparent;
     background-color: #88888880;
-    margin-left: 0.05vw;
+    margin-left: 0.1vw;
     position: relative;
     user-select: none;
 
@@ -147,13 +124,15 @@
 
 .contact-btn-container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    row-gap: clamp(0.5rem, 1rem + 0.5vw, 2vw);
     flex-grow: 1;
     max-width: fit-content;
     background-color: transparent;
+    align-self: flex-start;
+    flex-direction: row!important;
+    column-gap: 1rem;
+    flex-wrap: wrap;
 }
 
 
@@ -163,7 +142,7 @@
     min-width: clamp(12rem, 10vw + 5rem, 15vw) !important;
     
     border: var(--btn-border-size) solid var(--main-clr) !important;
-    border-radius: 10px !important;
+    border-radius: 2px !important;
     z-index: 1;
     position: relative !important;
     outline: 0;
@@ -185,10 +164,10 @@
     
 }
 .fill{
-    color: var(--dark-shade) !important;
+    color: var(--light-shade) !important;
 }
 .fill:hover{
-    color: var(--light-shade) !important;
+    color: var(--dark-shade) !important;
 }
 
 .fill:hover:before {
@@ -200,9 +179,9 @@
 }
 
 .slide {
-    background-color: var(--main-clr) !important;
-    border: var(--btn-border-size) solid var(--main-clr) !important;
-    color: var(--light-shade) !important;
+    background-color: transparent !important;
+    border: var(--btn-border-size) solid var(--dark-accent2) !important;
+    
 }
 
 
@@ -235,9 +214,9 @@
 }
 
 .slide:hover {
-    background: var(--light-accent) !important;
+    background: var(--main-clr) !important;
     border: var(--btn-border-size) solid transparent !important;
-    color: var(--light-shade) !important;
+    color: var(--dark-shade) !important;
 }
 
 .slide:hover:before {

@@ -4,7 +4,8 @@
   text-align: center;
   background-color: transparent;
   position: relative;
-  background-color: var(--light-shade);
+  background-color: var(--dark-shade);
+ 
 }
 
 .App-logo {
@@ -38,16 +39,28 @@
   
 }
 
+.home{
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+.projects{
+  padding-top:  calc(2.5rem + 5vh);
+  padding-bottom:  calc(2.5rem + 5vh);
+  margin-top: 0 !important;
+}
+
 .content-section{
-  
-  margin-bottom:  calc(5rem + 10vh);
+  margin-top:  calc(5rem + 10vh);
 }
 
-.skills-section{
-  margin-bottom: calc(1.25rem + 2.5vh) !important;
+/* .skills-section{
+  margin-top: calc(1.25rem + 2.5vh) !important; 
+} */
+
+.projects{
+  background-image: url("../src/img/bg3.png");
 }
-
-
 
 .App-link {
   color: #61dafb;

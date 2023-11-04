@@ -2,7 +2,7 @@ import React from 'react';
 
 import './About.css'
 
-import cvImg from '../../../img/cv_img3.jpg'
+import cvImg from '../../../img/cv_img.jpg'
 import { Link } from 'react-scroll';
 import { Button, Paper } from '@mui/material';
 import FileOpenIcon from '@mui/icons-material/FileOpen';
@@ -12,7 +12,7 @@ function About(){
         <section className='aboutme-container'>
             
             <section className='about-pic'>
-                <div className='pic-container' >
+                <div className='pic-container'  >
                   
                 </div>
             </section>

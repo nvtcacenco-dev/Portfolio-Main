@@ -6,8 +6,8 @@
     justify-content: flex-end!important;
     padding-left: 5vw;
     padding-right: 5vw;
-    padding-top: 1vh;
-    padding-bottom: 1vh;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     
     background-color: transparent!important;
     position: fixed!important;
@@ -19,9 +19,9 @@
     justify-content: flex-end!important;
     padding-left: 5vw;
     padding-right: 5vw;
-    padding-top: 0.5vh;
-    padding-bottom: 0.5vh;
-    background-color: var(--dark-shade)!important;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background-color: var(--light-shade)!important;
     position: fixed!important;
     transition: all 200ms ease!important;
     box-shadow: 0px 0px 10px rgba(0,0,0,.1);
@@ -53,14 +53,14 @@
     aspect-ratio: 1/1;
     background-color: transparent;
     font-family: 'Gugi', cursive;
-    font-size: clamp(1.2rem, 0.5vw + 1.2rem, 20rem);
-    color: var(--main-clr);
+    font-size: clamp(0.75rem, 0.5vw + 0.75rem, 20rem);
+    color: var(--dark-shade);
     cursor: pointer;
     user-select: none;
     transition: all 0.5s;
     border-radius: 33%;
-    border-left: 0.5rem solid var(--light-shade);
-    border-right: 0.5rem solid var(--light-shade);
+    border-left: 0.5rem solid var(--dark-shade);
+    border-right: 0.5rem solid var(--dark-shade);
     border-top: 0.5rem solid transparent;
     border-bottom: 0.5rem solid transparent;
 }
@@ -75,16 +75,19 @@
     transition: 0.2s;
   }
   .box:before {
+    border-radius: 0.125rem;
     top: 0rem;
     right: 0px;
   }
   .box:after {
+    border-radius: 0.125rem;
     bottom: 0rem;
     left: 0px;
   }
   .box:hover {
     border: 0.5rem solid transparent;
     transition: 0.5s;
+    color: var(--main-clr);
   }
   .box:hover:after{
     width: 150%;
@@ -108,7 +111,7 @@
 }
 
 .pages-button{
-  font-size: clamp(0.875rem, 0.75vw + 0.125rem, 25rem) !important;
+  font-size: clamp(0.75rem, 0.1vw + 0.75rem, 25rem) !important;
    display: flex!important;
    flex-direction: column!important;
    justify-content: flex-end!important;
@@ -133,7 +136,7 @@
 
 
 a .pages-button{
-    color: var(--light-shade);
+    color: var(--dark-shade);
 }
 a.active .pages-button{
     color: var(--main-clr);
@@ -179,7 +182,7 @@ a.active .pages-button{
     font-size: 2rem!important;
     border: 2px solid transparent!important;
     border-radius: 100%!important;
-    color: var(--light-shade)!important;
+    color: var(--dark-shade)!important;
     background-color: transparent!important;
     box-shadow: none!important;
     position: relative;  
@@ -194,7 +197,7 @@ a.active .pages-button{
   }
 
   .icon-button:hover{
-    color: var(--light-shade)!important;
+    color: var(--dark-shade)!important;
   }
 
   .icon-button::before, .icon-button::after{

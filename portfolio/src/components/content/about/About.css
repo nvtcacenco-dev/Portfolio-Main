@@ -11,9 +11,9 @@
     column-gap: 5rem;
     
     position: relative;
-    min-height: 90vh;
+    min-height: 100vh;
     
-    background-color: transparent;
+    background-color: #f7f7f7;
     padding-left: var(--padding-inline);
     padding-right: var(--padding-inline);
     
@@ -99,31 +99,27 @@
 .fill2:before {
     content: "";
     position: absolute;
-    background: var(--dark-shade);
+    background-color: #f7f7f7;
     bottom: 100%;
     left: 0;
     right: 0;
     top: 0;
     z-index: -1;
     transition: bottom 200ms ease-in;
-    color: var(--light-shade) !important;
-    
+    color: var(--dark-shade) !important;
 }
+
 .fill2{
     color: var(--light-shade) !important;
-    background-color: var(--dark-shade);
 }
 .fill2:hover{
-    color: var(--light-shade) !important;
-    background-color: var(--dark-shade);
+    color: var(--dark-shade) !important; 
 }
 
 .fill2:hover:before {
     bottom: 0;
     border: none !important;
-    color: var(--light-shade) !important;
-
-    background-color: var(--dark-shade);
+    background-color: #f7f7f7;
 }
 
 .open-cv-icon{

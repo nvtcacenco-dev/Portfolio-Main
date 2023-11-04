@@ -73,14 +73,14 @@ function DescriptionBox() {
                     
                 </h1>
                 <div className='wrap'><h1 className='typing-text'>{text}</h1>
-                    <div className='typing-divider' style={{ visibility: visibility }}>K</div>
+                    <div className='typing-divider'>K</div>
                     </div> 
                 <h4 className='description-tag'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </h4>
             </section>
             <section className='contact-btn-container'>
-                <Link activeClass='active' className='page-link' smooth={true} spy={true} offset={-120} duration={1000} to="projects">
+                <Link activeClass='active' className='page-link' smooth={true} spy={true} offset={-50} duration={1000} to="projects">
                     <Button disableRipple className='quick-btn fill'><p className='btn-txt'> See My Work</p></Button>
                 </Link>
                 <Link activeClass='active' className='page-link' smooth={true} spy={true} offset={0} duration={2000} to="footer">
@@ -91,10 +91,15 @@ function DescriptionBox() {
             </section>
 
             <section className='scroll-banner'>
-                <Link activeClass='active' className='scroll-link' smooth={true} spy={true} offset={-120} duration={1000} to="projects">
-                    <div className='arrow-container'>
-                        <span className="arrow right"></span>
+                <Link activeClass='active' className='scroll-link' smooth={true} spy={true} offset={-50} duration={1000} to="projects">
+                    <div className=''>
+                        <div className='mouse'></div>
                     </div>
+                    {/* <div className='arrow-container'>
+                        <span className="arrow right"></span>
+
+                        
+                    </div> */}
                 </Link>
             </section> 
         </section>

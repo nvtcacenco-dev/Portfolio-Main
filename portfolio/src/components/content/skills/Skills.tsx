@@ -18,7 +18,7 @@ interface SkillState {
 }
 
 function Skills() {
-  const elevation = 0;
+  const elevation = 4;
 
   const [skillsState, setSkillsState] = useState<Record<string, SkillState>>({
     clickedHTML: { clicked: false },

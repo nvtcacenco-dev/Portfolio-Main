@@ -2,106 +2,181 @@ import './Description.css'
 
 
 import { Button } from '@mui/material';
-import { useState, useEffect } from 'react';
-import { Link } from "react-scroll";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import UseAnimations from "react-useanimations";
-import arrowDown from 'react-useanimations/lib/arrowDownCircle';
-import ScrollDownArrow from '../../misc/ScrollDownArrow';
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+
 
 function DescriptionBox() {
 
-    const [isOver, setOver] = useState(false);
-    const [loopNum, setLoopNum] = useState(0);
-    const [isDeleting, setIsDeleting] = useState(false);
-    const toRotate = ["Software Engineer.", "Web Developer.", "Frontend Developer."];
-    const [text, setText] = useState('');
-    const [delta, setDelta] = useState(250)
-    const period = 3000;
+    const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+    
+    const animationDuration = 1;
+    const animationDelay = 2;
 
-    const [isVisible, setVisible] = useState(true);
-    const visibility = isVisible ? "visible" : "hidden";
+    function handleClick(section: string) {
 
-
-    useEffect(() => {
-        let ticker = setInterval(() => {
-            tick();
-        }, delta)
-        return () => { clearInterval(ticker) }
-    }, [text])
-
-    useEffect(() => {
-        let blinker = setInterval(() => {
-            if (isVisible) {
-                setVisible(false)
-            } else {
-                setVisible(true)
-            }
-
-        }, 700)
-        return () => { clearInterval(blinker) }
-    }, [isVisible])
-
-
-    function tick() {
-        let i = loopNum % toRotate.length;
-        let fullText = toRotate[i];
-        let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
-        setText(updatedText);
-
-        if (isDeleting) {
-            setDelta(100)
+        const element = document.getElementById(section);
+        if (element) {
+            element.scrollIntoView({
+                behavior: 'smooth'
+            })
         }
 
-        if (!isDeleting && updatedText === fullText) {
-            setIsDeleting(true);
-            setDelta(period);
-        } else if (isDeleting && updatedText === '') {
-            setIsDeleting(false);
-            setLoopNum(loopNum + 1);
-            setDelta(250);
-        }
     }
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
 
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
     return (
-        <section className='description-container'>
-            {/* <div className='brand-clr-box'></div> */}
-            <section className='description'>
-                
-                <h6 className='welcome-tag'> &#8212; Hello, I am</h6>
-                <h1 className='description-title'>Nicolae Tcacenco
-                    
-                </h1>
-                <div className='wrap'><h1 className='typing-text'>{text}</h1>
-                    <div className='typing-divider'>K</div>
-                    </div> 
-                <h4 className='description-tag'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </h4>
-            </section>
-            <section className='contact-btn-container'>
-                <Link activeClass='active' className='page-link' smooth={true} spy={true} offset={-50} duration={1000} to="projects">
-                    <Button disableRipple className='quick-btn fill'><p className='btn-txt'> See My Work</p></Button>
-                </Link>
-                <Link activeClass='active' className='page-link' smooth={true} spy={true} offset={0} duration={2000} to="footer">
-                    <Button disableRipple className='quick-btn slide'></Button>
-                </Link>
-                
-                
-            </section>
+        <section id='home' className='description-container d-flex justify-content-center align-items-center flex-wrap flex-column'>
 
-            <section className='scroll-banner'>
-                <Link activeClass='active' className='scroll-link' smooth={true} spy={true} offset={-50} duration={1000} to="projects">
+            <div className='col-10 position-relative d-flex flex-column' id='description-box'>
+                <motion.ul className='description'>
+
+                    <motion.p
+                        className='welcome-tag'
+                        initial={{ opacity: 0, translateY: -100 }}
+                        whileInView={{ opacity: 1, translateY: 0 }}
+                        transition={{ duration: animationDuration, delay: 0.4 }}
+                        viewport={{ once: true }}>
+                        &#8212; Hello, I am
+                    </motion.p>
+                    <motion.p
+                        className='description-title'
+                        initial={{ opacity: 0, translateY: 100 }}
+                        whileInView={{ opacity: 1, translateY: 0 }}
+                        transition={{ duration: animationDuration, delay: 0 }}
+                        viewport={{ once: true }}>
+                        Nicolae Tcacenco
+                    </motion.p>
+
+                    <motion.p
+                        className='description-title'
+                        id='outlined-text'
+                        initial={{ opacity: 0, translateX: 200 }}
+                        whileInView={{ opacity: 1, translateX: 0 }}
+                        transition={{ duration: animationDuration, delay: animationDuration }}
+                        viewport={{ once: true }}>
+                        FRONTEND {windowWidth < 576 && (<br/>)} & WEB
+                    </motion.p>
+                    <motion.p
+                        className='description-title'
+                        initial={{ opacity: 0, translateY: 100 }}
+                        whileInView={{ opacity: 1, translateY: 0 }}
+                        transition={{ duration: animationDuration, delay: 0.2 }}
+                        viewport={{ once: true }}>
+                        DEVELOPER
+                    </motion.p>
+                    <motion.p
+                        className='description-tag'
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ duration: animationDuration, delay: animationDelay }}
+                        viewport={{ once: true }}>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </motion.p>
+                </motion.ul>
+                <motion.div
+                    className='contact-btn-container col-12 col-lg-4 d-flex'
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: animationDuration, delay: animationDelay }}
+                    viewport={{ once: true }}
+                >
+                    <Button disableRipple className='quick-btn fill' onClick={() => handleClick('projects')}><p className='btn-txt m-0'> See My Work</p></Button>
+                    <Button disableRipple className='quick-btn slide' onClick={() => handleClick('footer')}></Button>
+                </motion.div>
+
+                <div className='col-12 d-flex justify-content-center justify-content-lg-end align-items-center column-gap-4' id='description-skills-container'>
+                    <motion.div
+                        className='skill-container'
+                        initial={{ opacity: 0, translateX: 100 }}
+                        whileInView={{ opacity: 1, translateX: 0 }}
+                        transition={{ duration: animationDuration, delay: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <div className='skill-icon-decoration' id='skill-icon-decoration-js' />
+                        <div className='skill-icon' />
+                        <p className='skill-icon-name'>JavaScript</p>
+
+                    </motion.div>
+
+                    <motion.div
+                        className='skill-container'
+                        initial={{ opacity: 0, translateX: 100 }}
+                        whileInView={{ opacity: 1, translateX: 0 }}
+                        transition={{ duration: animationDuration, delay: 0.1 }}
+                        viewport={{ once: true }}
+                    >
+                        <div className='skill-icon-decoration' id='skill-icon-decoration-ts' />
+                        <div className='skill-icon' />
+                        <p className='skill-icon-name'>TypeScript</p>
+
+                    </motion.div>
+
+                    <motion.div
+                        className='skill-container'
+                        initial={{ opacity: 0, translateX: 100 }}
+                        whileInView={{ opacity: 1, translateX: 0 }}
+                        transition={{ duration: animationDuration, delay: 0.2 }}
+                        viewport={{ once: true }}
+                    >
+                        <div className='skill-icon-decoration' id='skill-icon-decoration-html' />
+                        <div className='skill-icon' />
+                        <p className='skill-icon-name'>HTML5</p>
+
+                    </motion.div>
+
+                    <motion.div
+                        className='skill-container'
+                        initial={{ opacity: 0, translateX: 100 }}
+                        whileInView={{ opacity: 1, translateX: 0 }}
+                        transition={{ duration: animationDuration, delay: 0.3 }}
+                        viewport={{ once: true }}
+                    >
+                        <div className='skill-icon-decoration' id='skill-icon-decoration-css' />
+                        <div className='skill-icon' />
+                        <p className='skill-icon-name'>CSS3</p>
+
+                    </motion.div>
+
+                    <motion.div
+                        className='skill-container'
+                        initial={{ opacity: 0, translateX: 100 }}
+                        whileInView={{ opacity: 1, translateX: 0 }}
+                        transition={{ duration: animationDuration, delay: 0.4 }}
+                        viewport={{ once: true }}
+                    >
+                        <div className='skill-icon-decoration' id='skill-icon-decoration-react' />
+                        <div className='skill-icon' />
+                        <p className='skill-icon-name'>React</p>
+
+                    </motion.div>
+
+                </div>
+            </div>
+
+            <motion.div
+                className='scroll-banner col-12'
+                initial={{ opacity: 0, }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: animationDuration, delay: animationDelay }}
+                viewport={{ once: true }}>
+                <div className='scroll-link col-12' >
                     <div className=''>
-                        <div className='mouse'></div>
+                        <div className='mouse' onClick={() => handleClick('about')}></div>
                     </div>
-                    {/* <div className='arrow-container'>
-                        <span className="arrow right"></span>
 
-                        
-                    </div> */}
-                </Link>
-            </section> 
+                </div>
+            </motion.div>
+
         </section>
     );
 }

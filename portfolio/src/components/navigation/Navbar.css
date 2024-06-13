@@ -1,233 +1,84 @@
-
-
-
-
-.app-bar{
-    justify-content: flex-end!important;
-    padding-left: 5vw;
-    padding-right: 5vw;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    
-    background-color: transparent!important;
-    position: fixed!important;
-    box-shadow: none!important;
-    transition: all 200ms ease!important;
-}
-
-.app-bar-changed{
-    justify-content: flex-end!important;
-    padding-left: 5vw;
-    padding-right: 5vw;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    background-color: var(--light-shade)!important;
-    position: fixed!important;
-    transition: all 200ms ease!important;
-    box-shadow: 0px 0px 10px rgba(0,0,0,.1);
+nav {
+    background-color: var(--shade-clr-1);
+    height: var(--navbar-height);
+    z-index: 4;
+    transition: 
+        background-color 0.3s ease-in-out,
+        box-shadow 0.3s ease-in-out;
     
 }
 
-.nav-bar{
-  column-gap: 0.5rem;
+.navbar-changed{
+    background-color: var(--light-clr);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px, rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;
 }
 
-/* LOGO------------------------- */
-
-#box-changed:before{
-    top: 0rem!important;
-}
-
-#box-changed:after{
-    bottom: 0rem!important;
-}
-
-.box{
-    
-    
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
-    aspect-ratio: 1/1;
-    background-color: transparent;
-    font-family: 'Gugi', cursive;
-    font-size: clamp(0.75rem, 0.5vw + 0.75rem, 20rem);
-    color: var(--dark-shade);
+.nav-link {
+    text-decoration: none;
+    font-size: var(--fs-base);
+    font-weight: 400 !important;
     cursor: pointer;
-    user-select: none;
-    transition: all 0.5s;
-    border-radius: 33%;
-    border-left: 0.5rem solid var(--dark-shade);
-    border-right: 0.5rem solid var(--dark-shade);
-    border-top: 0.5rem solid transparent;
-    border-bottom: 0.5rem solid transparent;
+    color: var(--dark-clr);
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out !important;
+    margin-bottom: 0;
+    position: relative;
 }
 
-.box:before, .box:after {
-    content: "";
+.nav-link::before{
     position: absolute;
-    height: 0.5rem;
+    content: '';
+    bottom: -2px;
     width: 0%;
-    
-    background: var(--main-clr);
-    transition: 0.2s;
-  }
-  .box:before {
-    border-radius: 0.125rem;
-    top: 0rem;
-    right: 0px;
-  }
-  .box:after {
-    border-radius: 0.125rem;
-    bottom: 0rem;
-    left: 0px;
-  }
-  .box:hover {
-    border: 0.5rem solid transparent;
-    transition: 0.5s;
-    color: var(--main-clr);
-  }
-  .box:hover:after{
-    width: 150%;
-    transition: 0.5s;
-  }
-  
-  .box:hover:before {
-    width: 250%;
-    transition: 0.5s;
-  }
-
-
-/* PAGES------------------------- */
-.pages-group{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    flex-grow: 1;
-    padding-right: 2rem;
-    column-gap: 2rem;
-}
-
-.pages-button{
-  font-size: clamp(0.75rem, 0.1vw + 0.75rem, 25rem) !important;
-   display: flex!important;
-   flex-direction: column!important;
-   justify-content: flex-end!important;
-   
-}
-
-/* @media (min-width: 1920px) {
-
-  .pages-button{
-    font-size: clamp(0.875rem, 1.1vw + 0.875rem, 25rem) !important;
-  }
-  
-} */
-
-.pages-button:hover{
-    background-color: transparent!important;
-    
-    .indicator{
-        background: var(--main-clr);
-    }
+    height: 2px;
+    background-color: var(--main-clr);
+    transition: width 0.3s ease-in-out;
 }
 
 
-a .pages-button{
-    color: var(--dark-shade);
-}
-a.active .pages-button{
-    color: var(--main-clr);
+.nav-link:hover{
+    color: var(--main-clr) !important;
 }
 
-.indicator{
+.nav-link:hover::before{
     width: 100%;
-    height: 0.2rem;
-    background-color: transparent;
 }
 
+.active{
+    color: var(--main-clr) !important;
+}
 
+nav div ul {
+    position: relative;
+}
 
-
-.pages-button::after{
+nav div ul::before {
     content: '';
     position: absolute;
-    width: 0px;
-    height: 5px;
-    left: 50%;
-    bottom:0;
-    background-color: var(--main-clr);
-    transition: all ease-in-out .2s;
-  }
-  .pages-button:hover::after{
-    width: 100%;
-    left: 0;
-  }
-
-
-/* ICONS------------------------- */
-
-.icons-group{
-    
-    height: inherit!important;
-    column-gap: 0.5rem;
-    width: fit-content;
-    flex-grow: 0!important;
-    padding-right: 1rem;
+    bottom: 20px;
+    width: 120%;
+    height: 2px;
+    border-radius: 6px;
+    background-color: var(--faded-clr);
 }
 
-.icon-button{
-    font-size: 2rem!important;
-    border: 2px solid transparent!important;
-    border-radius: 100%!important;
-    color: var(--dark-shade)!important;
-    background-color: transparent!important;
-    box-shadow: none!important;
-    position: relative;  
+.logo{
+   /*  background-image: url('../../img/logo.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat; */
+    width: calc(48px + 2vw);
+    cursor: pointer;
 }
 
-.icon-button::before, .icon-button::after {
-    box-sizing: inherit;
-    content: "";
-    position: absolute;
-    width: 100%;
+.logo svg{
     height: 100%;
-  }
+    width: 100%;
+}
 
-  .icon-button:hover{
-    color: var(--dark-shade)!important;
-  }
+.logo svg g{
+    transition: fill 0.3s ease-in-out;
+}
 
-  .icon-button::before, .icon-button::after{
-    top: 0!important;
-    left: 0!important;
-    border-radius: 100%!important;
-  }
- 
-  .icon-button::before {
-    border: 2px solid transparent!important;
-  }
-  .icon-button:hover::before {
-    border-top-color: var(--main-clr)!important;
-    border-right-color: var(--main-clr)!important;
-    border-bottom-color: var(--main-clr)!important;
-    transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s!important;
-  }
-  .icon-button::after {
-    border: 0 solid transparent!important;
-  }
-  .icon-button:hover::after {
-    border-top: 2px solid var(--main-clr)!important;
-    border-left-width: 2px!important;
-    border-right-width: 2px!important;
-    transform: rotate(270deg)!important;
-    transition: transform 0.4s linear 0s, border-left-width 0s linear 0.35s!important;
-  }
-
-
-
-
-
-
+.logo:hover svg g{
+    fill: var(--main-clr) !important;
+}

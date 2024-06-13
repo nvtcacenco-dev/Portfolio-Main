@@ -3,9 +3,11 @@
 .App {
   text-align: center;
   background-color: transparent;
-  position: relative;
+  
   background-color: #fafafa;
+  
  
+  
 }
 
 .App-logo {
@@ -32,35 +34,47 @@
 
 .content-container{
   display: flex;
+  padding: 0;
   flex-direction: column;
-  top: 0;
-  position: relative;
+  padding-top: 100px;
   width: 100%;
+  position: relative;
+}
+
+#floating-action-btn{
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  background-color: var(--main-clr);
+  bottom: 30px;
+  right: 30px;
+  transition: transform 0.3s ease-in-out;
+}
+
+#floating-action-btn svg{
+  fill: var(--light-clr);
   
 }
 
-.home{
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-}
-
-.projects{
-  margin-top:  0;
-  margin-bottom:0;
+.fab-visible{
   
+  transform: scale(1);
+}
+
+.fab-hidden{
   
-}
-
-.skills, .about-me{
-  /* margin-top:  calc(2.5rem + 5vh);
-  margin-bottom:  calc(2.5rem + 5vh); */
+  transform: scale(0);
 }
 
 
 
-/* .skills-section{
-  margin-top: calc(1.25rem + 2.5vh) !important; 
-} */
+@media (width < 576px) {
+  #floating-action-btn{
+    
+    bottom: 10px;
+    right: 10px;
+  }
+}
 
 
 
@@ -68,11 +82,3 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

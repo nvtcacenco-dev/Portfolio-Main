@@ -1,0 +1,22 @@
+.section-title{
+    writing-mode: vertical-rl;
+    
+    text-orientation: mixed;
+    position: absolute;
+    
+    margin: 0;
+    margin-block: auto;
+    color: var(--faded-clr);
+    font-size: var(--fs-8xl) !important;
+    user-select: none;
+    z-index: 0;
+}
+
+.title-left{
+    left: 0;
+}
+
+.title-right{
+    right: 0;
+    transform: rotate(180deg);
+}

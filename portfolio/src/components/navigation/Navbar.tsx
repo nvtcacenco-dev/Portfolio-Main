@@ -1,118 +1,93 @@
-import * as React from 'react';
-
-
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
-
-
-
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-
-
+import { Link } from 'react-scroll'
 import './Navbar.css'
-import { useState } from 'react';
-import { Link } from "react-scroll";
+import { SvgIcon } from '@mui/material'
+import { useEffect, useState } from 'react';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
-function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-  const [clrChange, setColor] = useState(false);
-  const changeNavBarClr = () => {
-    if (window.scrollY >= 30) {
-      setColor(true)
-    }
-    else {
-      setColor(false)
-    }
-  }
-
-
-  window.addEventListener("scroll", changeNavBarClr);
-  const className = clrChange === true ? "app-bar-changed" : "app-bar";
-  const idName = clrChange === true ? "box-changed" : "";
-
-  return (
-    <AppBar className={className} position="sticky">
-
-      <Toolbar className='nav-bar' disableGutters sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' }, justifyContent: { xs: 'center', md: 'flex-end' } }}>
-
-        <section className='logo-group'>
-
-          <div className='box ' id={idName}>
-            <Link activeClass='inactive' smooth={true} spy={true} offset={-500} duration={1000} to="home">NVT</Link>
-          </div>
-
-        </section>
-        <section className='pages-group' >
-
-          <Link activeClass='active' className='page-link' smooth={true} spy={true} offset={-500} duration={1000} to="home">
-            <Button className='pages-button' key="Home" sx={{ my: 2, color: 'white', display: 'block' }}>Home</Button>
-          </Link>
-
-          <Link activeClass='active' className='page-link' smooth={true} spy={true} offset={-50} duration={1000} to="projects">
-            <Button className='pages-button' key="Projects" sx={{ my: 2, color: 'white', display: 'block' }}>Projects</Button>
-          </Link>
-
-
-          <Link activeClass='active' className='page-link' smooth={true} spy={true} offset={-50} duration={1000} to="about-me">
-            <Button className='pages-button' key="About Me" sx={{ my: 2, color: 'white', display: 'block' }}>About Me</Button>
-          </Link>
-
-          <Link activeClass='active' className='page-link' smooth={true} spy={true} offset={-50} duration={1000} to="skills">
-            <Button className='pages-button' key="Skills" sx={{ my: 2, color: 'white', display: 'block' }}>Skills</Button>
-          </Link>
-
-        </section>
-        <Box className='icons-group' sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-
-          <a href='https://dk.linkedin.com/' target='_blank' rel="noopener noreferrer">
-            <IconButton className='icon-button' aria-label="linked-in" size="large">
-              <LinkedInIcon fontSize="inherit" />
-            </IconButton>
-          </a>
-          <a href='https://github.com/' target='_blank' rel="noopener noreferrer">
-            <IconButton className='icon-button' aria-label="github" size="large">
-              <GitHubIcon fontSize="inherit" />
-            </IconButton>
-          </a>
-
-        </Box>
-
-      </Toolbar>
-
-    </AppBar> 
-
+export default function Navbar() {
+    const [navClass, setNavClass] = useState<boolean>(false);
     
-  ); 
+    const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+
+    const changeNavBarClr = () => {
+         if (window.scrollY > 30) {
+            setNavClass(true);
+
+        } else {
+            setNavClass(false);
+
+        }
+    };
+
+    const handleScroll = () => {
+        changeNavBarClr();
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    const navName = navClass === true ? "navbar-changed" : "";
+    
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+    function handleClick (section: string) {
+
+        const element = document.getElementById(section);
+        if (element) {
+            element.scrollIntoView({ 
+                behavior: 'smooth'
+            })
+        }
+        
+    }
+   
+    return (
+        <nav className={`${navName} col-12 position-fixed top-0 d-flex justify-content-center `} id='custom-nav'>
+            <div className='col-10 d-flex justify-content-between'>
+                <div className='logo d-flex justify-content-center align-items-center'>
+                   
+                    
+                    <a href='/'>
+                        <SvgIcon>
+                            
+                            <svg viewBox="90.2931 0 100 49.8338" width="100" height="49.8338" xmlns="http://www.w3.org/2000/svg">
+                                <g id="SvgjsG1824" transform="matrix(3.3997230529785156, 0, 0, 3.3997230529785156, 87.37103271484375, -18.2935733795166)" fill="var(--dark-clr)">
+                                    <path d="M15.088 13.6328 l-1.4551 6.3574 l-4.541 0 l-1.9336 -6.3574 l-0.22461 0 l-1.4746 6.3574 l-4.5996 0 l1.4746 -6.3574 l-0.88867 0 l1.8848 -8.1836 l5.3613 0 l1.582 5.1367 l1.2012 -5.1367 l4.6191 0 l-1.8945 8.1836 l0.88867 0 z M25.459109375 13.3594 l-1.4844 6.6797 l-4.9512 0 l1.5234 -6.6797 l-0.88867 0 l0.98633 -4.2773 l-3.9063 0 l0.85938 -3.7012 l12.676 0 l-0.83008 3.7012 l-3.8965 0 l-0.95703 4.2773 l0.86914 0 z" />
+                                </g>
+                            </svg>
+                        </SvgIcon>
+                    </a>
+                </div>
+                <ul  className='d-flex justify-content-center align-items-center h-100 column-gap-4'>
+                    <li className=''>
+                        <p className='nav-link' onClick={() => handleClick('home')}>
+                            Home
+                        </p>
+                    </li>
+                    <li className=''>
+                        <p className='nav-link' onClick={() => handleClick('about')}>
+                            About Me
+                        </p>
+                    </li>
+                    <li className=''>
+                        <p className='nav-link' onClick={() => handleClick('projects')}>
+                            Projects
+                        </p>
+                    </li>
+                    <li className=''>
+                        <p  className='nav-link' onClick={() => handleClick('skills')}>
+                            Skills
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    )
 }
-export default ResponsiveAppBar;

@@ -4,40 +4,170 @@ import './About.css'
 
 import cvImg from '../../../img/cv_img.jpg'
 import { Link } from 'react-scroll';
-import { Button, Paper } from '@mui/material';
+import { Button, Paper, SvgIcon, duration } from '@mui/material';
 import FileOpenIcon from '@mui/icons-material/FileOpen';
+import PageTitle from '../../misc/PageTitle';
+import { motion } from 'framer-motion';
+import arrowIcon from '../../../img/arrow.svg'
+import { useEffect, useState } from 'react';
+const textContainer = {
+    hidden: {},
+    show: {
 
-function About(){
-    return(
-        <section className='aboutme-container'>
-            
-            <section className='about-pic'>
-                <div className='pic-container'  >
-                  
-                </div>
-            </section>
-            <section className='about-section'>
-                <p className='about-title'>About me</p>
-                <h2>Get To Know Me</h2>
-                <h4>
-                    A HTML Email Developer with a comprehensive understanding of email design. 
-                    From translating design mockups into HTML email documents, 
-                    I create original and effective designs that take all project deliverables into account. 
-                    Personal development is very important to me and I'm constantly improving my skills and knowledge to get the best results from every campaign. 
-                    My meticulous attention to detail and ability to work within tight deadlines ensures I deliver projects on time, on budget, and on specification
-                </h4>
-                <Button className='btn-cv fill2'>
-                    <p className='btn-cv-txt' >My CV</p>
-                    <FileOpenIcon className='open-cv-icon'/>
-                </Button>
-            </section>
-            {/* <section className='scroll-banner'>
-                <Link activeClass='active' className='scroll-link' smooth={true} spy={true} offset={-100} to="about-me">
-                    <div className='arrow-container'>
-                        <span className="arrow right"></span>
+        transition: {
+            staggerChildren: 0.5
+        }
+    },
+
+}
+const text = {
+    hidden: { opacity: 0, translateY: 100 },
+    show: { opacity: 1, translateY: 0, transition: { duration: 1 } }
+}
+
+
+
+
+function About() {
+    const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+    return (
+        <section id='about' className='about-section d-flex justify-content-center align-items-center col-12 position-relative'>
+            <div className='about-container col-10 col-lg-9 d-flex px-lg-0 flex-wrap row-gap-5'>
+                <div className='col-12 col-lg-7 d-flex align-content-center flex-column'>
+                    <h2 className='col-12 mb-5 mb-lg-0' /* variants={textContainer} */  >
+                        <motion.p
+                            className='mb-0'
+                            initial={{ opacity: 0, translateY: -50 }}
+                            whileInView={{ opacity: 1, translateY: 0 }}
+                            transition={{ duration: 1 }}
+                            viewport={{ once: true }}
+                        >
+                            I create amazing
+                        </motion.p>
+
+                        <motion.span
+                            id='title-text-transform'
+                            initial={{ opacity: 0, translateX: 100 }}
+                            whileInView={{ opacity: 1, translateX: 0 }}
+                            transition={{ duration: 1 }}
+                            viewport={{ once: true }}
+                        >
+                            {windowWidth > 576 && (<div className='col-2' id='title-text-dash' />)}
+
+                            <p className='col-9 mb-0 flex-grow-1'>digital products</p>
+                        </motion.span>
+                        <motion.p
+                            className='mb-0'
+                            initial={{ opacity: 0, translateY: 100 }}
+                            whileInView={{ opacity: 1, translateY: 0 }}
+                            transition={{ duration: 1 }}
+                            viewport={{ once: true }}
+                        >
+                            for your brand
+                        </motion.p>
+                    </h2>
+                    {windowWidth < 576 && (
+                        <div className='col-12 col-lg-5 px-lg-3 d-flex justify-content-center align-items-end' id='img-container'>
+                            <motion.div
+                                id='img-box'
+                                className='col-10 position-relative'
+                                initial={{ opacity: 0, translateX: 300 }}
+                                whileInView={{ opacity: 1, translateX: 0 }}
+                                transition={{ duration: 0.8 }}
+                                viewport={{ once: true }}
+                            >
+                                <div id='personal-img'></div>
+                                <motion.div
+                                    id='img-box-style'
+                                    initial={{ opacity: 0, rotate: 0 }}
+                                    whileInView={{ opacity: 1, rotate: 10 }}
+
+                                    transition={{ duration: 0.8, delay: 0.8 }}
+                                    viewport={{ once: true }} />
+                            </motion.div>
+
+                        </div>)}
+                    <div className='d-flex' id='about-description-container'>
+                        <motion.div
+                            initial={{ opacity: 0, translateY: 100 }}
+                            whileInView={{ opacity: 1, translateY: 0 }}
+                            transition={{ duration: 1, delay: 0.5 }}
+                            viewport={{ once: true }}
+                            className='col-12 col-lg-7'
+                        >
+
+                            <p className='col-12' id='about-description'>
+                                Lorem ipsum dolor sit amet,
+                                consectetur adipiscing elit.
+                                In rhoncus leo sed rutrum elementum.
+                                Aenean lectus nisi, feugiat in egestas sed,
+                                blandit sit amet nulla. Sed at mattis arcu,
+                                id luctus tortor. Phasellus ut eros at lectus suscipit rutrum vel a felis.
+                                Nullam convallis lorem neque, at tincidunt odio tempus nec.
+                                Duis pharetra et libero sit amet pharetra. Sed euismod at magna nec ultricies.
+                                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+                                Praesent in sapien varius, lobortis ex sit amet, euismod sapien.
+                            </p>
+                            <div className='col-12 d-flex' id='contact-me-btn-container'>
+                                <Button id='contact-me-btn'>
+                                    <p>Contact Me</p>
+                                </Button>
+                            </div>
+                        </motion.div>
+                        {windowWidth > 576 && (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ duration: 2 }}
+                                viewport={{ once: true }}
+                                className='col-5' id='about-description-arrow-container'
+                            >
+
+
+                                <div id='about-description-arrow' />
+
+
+                            </motion.div>)}
+
+
                     </div>
-                </Link>
-            </section>  */}
+                </div>
+                {windowWidth > 576 && (
+                    <div className='col-12 col-lg-5 px-3 d-flex justify-content-center align-items-end' id='img-container'>
+                        <motion.div
+                            id='img-box'
+                            className='col-10 position-relative'
+                            initial={{ opacity: 0, translateX: 300 }}
+                            whileInView={{ opacity: 1, translateX: 0 }}
+                            transition={{ duration: 0.8 }}
+                            viewport={{ once: true }}
+                        >
+                            <div id='personal-img'></div>
+                            <motion.div
+                                id='img-box-style'
+                                initial={{ opacity: 0, rotate: 0 }}
+                                whileInView={{ opacity: 1, rotate: 5 }}
+
+                                transition={{ duration: 0.8, delay: 0.8 }}
+                                viewport={{ once: true }} />
+                        </motion.div>
+
+                    </div>)}
+            </div>
+
+            <PageTitle title={'ABOUT'} dir={'right'} />
+
         </section>
     )
 }

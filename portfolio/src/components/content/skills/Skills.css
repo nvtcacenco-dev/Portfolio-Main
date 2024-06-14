@@ -1,6 +1,6 @@
 
 .skills-section{
-    min-height: calc(100svh - var(--navbar-height));
+    min-height: 100svh;
     background-color: var(--shade-clr-4);
     
     

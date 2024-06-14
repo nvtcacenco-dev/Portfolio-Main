@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useRef } from 'react';
 
 import './About.css'
 
@@ -10,26 +10,14 @@ import PageTitle from '../../misc/PageTitle';
 import { motion } from 'framer-motion';
 import arrowIcon from '../../../img/arrow.svg'
 import { useEffect, useState } from 'react';
-const textContainer = {
-    hidden: {},
-    show: {
-
-        transition: {
-            staggerChildren: 0.5
-        }
-    },
-
-}
-const text = {
-    hidden: { opacity: 0, translateY: 100 },
-    show: { opacity: 1, translateY: 0, transition: { duration: 1 } }
-}
+import { LanguageContext, LanguageContextType } from '../../../model/LanguageContext';
+import { ComponentProps, aboutTaglineStringPart1, aboutTaglineStringPart2, aboutTaglineStringPart3, btnContactMeString } from '../../../model/types';
 
 
-
-
-function About() {
+export default function About({ onIntersectionChange }: ComponentProps) {
+    const { language } = useContext<LanguageContextType>(LanguageContext);
     const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+    const aboutRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
         const handleResize = () => {
             setWindowWidth(window.innerWidth);
@@ -41,8 +29,32 @@ function About() {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
+
+
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    onIntersectionChange('about me');
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5
+        });
+
+        if (aboutRef.current) {
+            observer.observe(aboutRef.current);
+        }
+
+        return () => {
+            observer.disconnect();
+        };
+    }, [onIntersectionChange]);
+    
     return (
-        <section id='about' className='about-section d-flex justify-content-center align-items-center col-12 position-relative'>
+        <section ref={aboutRef} id='about' className='about-section d-flex justify-content-center align-items-center col-12 position-relative'>
             <div className='about-container col-10 col-lg-9 d-flex px-lg-0 flex-wrap row-gap-5'>
                 <div className='col-12 col-lg-7 d-flex align-content-center flex-column'>
                     <h2 className='col-12 mb-5 mb-lg-0' /* variants={textContainer} */  >
@@ -50,31 +62,33 @@ function About() {
                             className='mb-0'
                             initial={{ opacity: 0, translateY: -50 }}
                             whileInView={{ opacity: 1, translateY: 0 }}
-                            transition={{ duration: 1 }}
+                            transition={{ duration: 1, delay: 0.2 }}
                             viewport={{ once: true }}
                         >
-                            I create amazing
+                            {aboutTaglineStringPart1[language]}
                         </motion.p>
 
                         <motion.span
                             id='title-text-transform'
                             initial={{ opacity: 0, translateX: 100 }}
                             whileInView={{ opacity: 1, translateX: 0 }}
-                            transition={{ duration: 1 }}
+                            transition={{ duration: 1, delay: 0.2 }}
                             viewport={{ once: true }}
                         >
                             {windowWidth > 576 && (<div className='col-2' id='title-text-dash' />)}
 
-                            <p className='col-9 mb-0 flex-grow-1'>digital products</p>
+                            <p className='col-9 mb-0 flex-grow-1'>
+                                {aboutTaglineStringPart2[language]}
+                            </p>
                         </motion.span>
                         <motion.p
                             className='mb-0'
                             initial={{ opacity: 0, translateY: 100 }}
                             whileInView={{ opacity: 1, translateY: 0 }}
-                            transition={{ duration: 1 }}
+                            transition={{ duration: 1, delay: 0.2 }}
                             viewport={{ once: true }}
                         >
-                            for your brand
+                            {aboutTaglineStringPart3[language]}
                         </motion.p>
                     </h2>
                     {windowWidth < 576 && (
@@ -84,7 +98,7 @@ function About() {
                                 className='col-10 position-relative'
                                 initial={{ opacity: 0, translateX: 300 }}
                                 whileInView={{ opacity: 1, translateX: 0 }}
-                                transition={{ duration: 0.8 }}
+                                transition={{ duration: 0.8, delay: 0.2 }}
                                 viewport={{ once: true }}
                             >
                                 <div id='personal-img'></div>
@@ -93,7 +107,7 @@ function About() {
                                     initial={{ opacity: 0, rotate: 0 }}
                                     whileInView={{ opacity: 1, rotate: 10 }}
 
-                                    transition={{ duration: 0.8, delay: 0.8 }}
+                                    transition={{ duration: 0.8, delay: 1 }}
                                     viewport={{ once: true }} />
                             </motion.div>
 
@@ -102,7 +116,7 @@ function About() {
                         <motion.div
                             initial={{ opacity: 0, translateY: 100 }}
                             whileInView={{ opacity: 1, translateY: 0 }}
-                            transition={{ duration: 1, delay: 0.5 }}
+                            transition={{ duration: 1, delay: 0.2 }}
                             viewport={{ once: true }}
                             className='col-12 col-lg-7'
                         >
@@ -120,8 +134,8 @@ function About() {
                                 Praesent in sapien varius, lobortis ex sit amet, euismod sapien.
                             </p>
                             <div className='col-12 d-flex' id='contact-me-btn-container'>
-                                <Button id='contact-me-btn'>
-                                    <p>Contact Me</p>
+                                <Button className='col-6' id='contact-me-btn'>
+                                    <p>{btnContactMeString[language]}</p>
                                 </Button>
                             </div>
                         </motion.div>
@@ -129,7 +143,7 @@ function About() {
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
-                                transition={{ duration: 2 }}
+                                transition={{ duration: 2, delay: 1 }}
                                 viewport={{ once: true }}
                                 className='col-5' id='about-description-arrow-container'
                             >
@@ -150,7 +164,7 @@ function About() {
                             className='col-10 position-relative'
                             initial={{ opacity: 0, translateX: 300 }}
                             whileInView={{ opacity: 1, translateX: 0 }}
-                            transition={{ duration: 0.8 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
                             viewport={{ once: true }}
                         >
                             <div id='personal-img'></div>
@@ -159,17 +173,15 @@ function About() {
                                 initial={{ opacity: 0, rotate: 0 }}
                                 whileInView={{ opacity: 1, rotate: 5 }}
 
-                                transition={{ duration: 0.8, delay: 0.8 }}
+                                transition={{ duration: 0.8, delay: 1 }}
                                 viewport={{ once: true }} />
                         </motion.div>
 
                     </div>)}
             </div>
 
-            <PageTitle title={'ABOUT'} dir={'right'} />
+            <PageTitle title={'about'} dir={'right'} />
 
         </section>
     )
 }
-
-export default About;

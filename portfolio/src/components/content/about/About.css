@@ -2,7 +2,7 @@
 .about-section{
     min-height: 100svh;
     background-color: var(--shade-clr-2);
-    overflow: hidden;
+    
     
 }
 

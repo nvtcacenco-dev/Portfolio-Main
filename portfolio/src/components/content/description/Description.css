@@ -17,24 +17,13 @@
 }
 
 .description-container {
-
     min-height: 100svh;
-
     position: relative;
     background-color: var(--shade-clr-1);
-    /*  background-color: transparent;
-    background: linear-gradient(to right,rgba(245,245,245,.8),rgba(245,245,245,.8)),url("../../../img/bg5.jpg"); */
-
-    /* padding-inline: clamp(0.5rem, -0.90173rem + 5.902vw, 5rem);  */
-
-    /* padding-inline: calc(64px + 5rem); */
-    
 }
 
 .description {
     width: 100%;
-
-
 }
 
 #description-box{
@@ -147,7 +136,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    content: "Hire me";
+    content: attr(data-content1);
     position: absolute;
     width: 100%;
     height: 100%;
@@ -161,7 +150,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    content: "Get my info";
+    content: attr(data-content2);
     height: 100%;
     width: 100%;
     position: absolute;
@@ -249,6 +238,10 @@
    
 }
 
+.skill-container:nth-of-type(6) .skill-icon{
+    background-image: url('../../../img/logo_nextjs.svg'); 
+}
+
 .skill-icon-decoration{
     width: 100%;
     height: 100%;
@@ -266,6 +259,10 @@
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+#skill-icon-decoration-next{
+    border-radius: 50%;
 }
 
 .skill-icon-name{

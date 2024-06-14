@@ -1,49 +1,45 @@
-import * as React from 'react';
-import { useRef, useState } from 'react';
-import { Button } from '@mui/material';
-import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useRef, useState } from "react";
 
-import './Projects.css';
+import "./Projects.css";
 
-import ProjectMainWithTransition from './ProjectMain';
-import ProjectCarRentalWithTransition from './ProjectCarRental';
-import Transition from './Transition';
-import PageTitle from '../../misc/PageTitle';
+import PageTitle from "../../misc/PageTitle";
+import { ComponentProps } from "../../../model/types";
 
-const mainProj = React.lazy(() => import('./ProjectMain'));
-const carRental = React.lazy(() => import('./ProjectCarRental'));
-const webShop = React.lazy(() => import('./ProjectWebShop'));
-const cryptoTracker = React.lazy(() => import('./ProjectCryptoTracker'));
+export default function Projects({ onIntersectionChange }: ComponentProps) {
+    const projectsRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        onIntersectionChange("projects");
+                    }
+                });
+            },
+            {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.5,
+            }
+        );
 
-type ProjectType = {
-    projectName: string;
-    status: boolean;
-    Component: React.FC<any>;
-};
+        if (projectsRef.current) {
+            observer.observe(projectsRef.current);
+        }
 
-const defaultProject: ProjectType = {
-    projectName: 'Projects',
-    status: true,
-    Component: mainProj
-};
-
-const projects: ProjectType[] = [
-    { projectName: 'Car Rental', status: false, Component: carRental },
-    { projectName: "Web Shop", status: false, Component: webShop },
-    { projectName: "Crypto Tracker", status: false, Component: cryptoTracker}
-];
-
-export default function Projects() {
-   
-
+        return () => {
+            observer.disconnect();
+        };
+    }, [onIntersectionChange]);
     return (
-        <section id='projects' className='projects-section d-flex justify-content-center align-items-center col-12 position-relative'>
-            <div className='projects-container col-10'>
+        <section
+            ref={projectsRef}
+            id="projects"
+            className="projects-section d-flex justify-content-center align-items-center col-12 position-relative"
+        >
+            <div className="projects-container col-10"></div>
 
-            </div>
-            
-            <PageTitle title={'PROJECTS'} dir={'left'}/>
-            
+            <PageTitle title={"projects"} dir={"left"} />
         </section>
     );
 }

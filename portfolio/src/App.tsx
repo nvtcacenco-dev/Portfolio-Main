@@ -12,6 +12,7 @@ import Navbar from './components/navigation/Navbar';
 import { Fab } from '@mui/material';
 
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { handleSectionClick } from './model/functions';
 
 function App() {
   const [fabClass, setFabClass] = useState<boolean>(false);
@@ -43,42 +44,36 @@ function App() {
   const handleScroll = () => {
     showFab();
   };
-
-
-  function handleClick() {
-
-    const element = document.getElementById('home');
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth'
-      })
-    }
-
-  }
+ 
 
   window.addEventListener('scroll', handleScroll);
   const fabName = fabClass === true ? 'fab-visible' : 'fab-hidden';
+  const [activeSection, setActiveSection] = useState<string>('home');
 
+  // Function to handle intersection changes
+  const handleIntersectionChange = (sectionName: string) => {
+    setActiveSection(sectionName);
+  };
   return (
     <div className="App d-flex flex-column flex-lg-row m-0 overflow-x-hidden">
 
 
-      <Navbar />
+      <Navbar activeSection={activeSection} />
       <main className='content-container p-0' >
 
-        <Description />
+        <Description onIntersectionChange={handleIntersectionChange} />
 
 
-        <About />
+        <About onIntersectionChange={handleIntersectionChange} />
 
 
-        <Projects />
+        <Projects onIntersectionChange={handleIntersectionChange} />
 
 
 
-        <Skills />
+        <Skills onIntersectionChange={handleIntersectionChange} />
 
-        <Fab className={`${fabName}`} id='floating-action-btn' disabled={!fabClass} onClick={() => handleClick()}>
+        <Fab className={`${fabName}`} id='floating-action-btn' disabled={!fabClass} onClick={() => setTimeout(function() {window.scrollTo(0, 0);},1)}>
           <KeyboardArrowUpIcon fontSize='large' />
         </Fab>
       </main>

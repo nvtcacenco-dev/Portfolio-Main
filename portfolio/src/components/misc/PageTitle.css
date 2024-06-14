@@ -3,7 +3,7 @@
     
     text-orientation: mixed;
     position: absolute;
-    
+    text-transform: uppercase;
     margin: 0;
     margin-block: auto;
     color: var(--faded-clr);

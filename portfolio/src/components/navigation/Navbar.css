@@ -22,9 +22,11 @@ nav {
     transition: color 0.3s ease-in-out, transform 0.3s ease-in-out !important;
     margin-bottom: 0;
     position: relative;
+    text-transform: capitalize;
+    letter-spacing: normal !important;
 }
 
-.nav-link::before{
+.nav-link:not(.lang-btn):before{
     position: absolute;
     content: '';
     bottom: -2px;
@@ -43,6 +45,29 @@ nav {
     width: 100%;
 }
 
+
+.lang-btn {
+    aspect-ratio: 22/18;
+    min-width: 24px;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    margin-top: 2px;
+    border-bottom: 3px solid transparent !important;
+    transition: border 0.3s ease-in-out !important;
+}
+
+.lang-btn-active{
+    border-bottom: 3px solid var(--main-clr) !important;
+}
+
+#btn-en{
+    background-image: url('../../img/flag_US.svg');
+}
+
+#btn-dk{
+    background-image: url('../../img/flag_DK.svg');
+}
 .active{
     color: var(--main-clr) !important;
 }
@@ -51,7 +76,7 @@ nav div ul {
     position: relative;
 }
 
-nav div ul::before {
+/* nav div ul::before {
     content: '';
     position: absolute;
     bottom: 20px;
@@ -59,7 +84,7 @@ nav div ul::before {
     height: 2px;
     border-radius: 6px;
     background-color: var(--faded-clr);
-}
+} */
 
 .logo{
    /*  background-image: url('../../img/logo.svg');

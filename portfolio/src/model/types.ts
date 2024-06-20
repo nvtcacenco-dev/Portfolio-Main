@@ -46,6 +46,11 @@ export const navStrings: navString[] = [
   },
 ];
 
+export const languageString: Record<Language, string> = {
+  [Language.DANISH]: "Sprog",
+  [Language.ENGLISH]: "Language",
+};
+
 //HERO STRINGS
 export const welcomeTagString: Record<Language, string> = {
   [Language.DANISH]: "Hej, Jeg er",
@@ -94,15 +99,53 @@ export const aboutTaglineStringPart2: Record<Language, string> = {
 };
 
 export const aboutTaglineStringPart3: Record<Language, string> = {
-  [Language.DANISH]: "Til dit brand.",
-  [Language.ENGLISH]: "For your brand.",
+  [Language.DANISH]: "Til dit brand",
+  [Language.ENGLISH]: "For your brand",
+};
+
+export const aboutKeywordString1: Record<Language, string> = {
+  [Language.DANISH]: "Problem",
+  [Language.ENGLISH]: "Problem",
+};
+
+export const aboutKeywordString2: Record<Language, string> = {
+  [Language.DANISH]: "Løser",
+  [Language.ENGLISH]: "Solver",
+};
+
+export const aboutKeywordString3: Record<Language, string> = {
+  [Language.DANISH]: "Detalje",
+  [Language.ENGLISH]: "Attention",
+};
+
+export const aboutKeywordString4: Record<Language, string> = {
+  [Language.DANISH]: "Orienteret",
+  [Language.ENGLISH]: "to Detail",
+};
+
+export const aboutKeywordString5: Record<Language, string> = {
+  [Language.DANISH]: "Team",
+  [Language.ENGLISH]: "Team",
+};
+
+export const aboutKeywordString6: Record<Language, string> = {
+  [Language.DANISH]: "Player",
+  [Language.ENGLISH]: "Player",
 };
 
 //SKILLS STRINGS
 
-export const taglineSkillsString: Record<Language, string> = {
-  [Language.DANISH]: "Præcision og ekspertise i hvert projekt.",
-  [Language.ENGLISH]: "Precision and expertise in every project.",
+export const taglineSkillsString1: Record<Language, string> = {
+  [Language.DANISH]: "Præcision og",
+  [Language.ENGLISH]: "Precision and",
+};
+export const taglineSkillsString2: Record<Language, string> = {
+  [Language.DANISH]: "ekspertise",
+  [Language.ENGLISH]: "expertise",
+};
+export const taglineSkillsString3: Record<Language, string> = {
+  [Language.DANISH]: "i hvert projekt",
+  [Language.ENGLISH]: "in every project",
 };
 
 export const devSkillsString: Record<Language, string> = {

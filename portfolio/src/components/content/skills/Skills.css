@@ -1,82 +1,179 @@
-
-.skills-section{
+.skills-section {
     min-height: 100svh;
     background-color: var(--shade-clr-4);
-    
-    
+
+
 }
 
-.skills-container{
+.skills-container {
     /* border: 2px solid red; */
-    min-height: 80svh;
+    height: 100%;
 }
 
-#skills-top-section{
-    min-height: 40svh;
+#skills-top-section {
+    min-height: 30svh;
 }
 
-#skills-bottom-section{
-    column-gap: calc(12px + 0.25rem);
+#skills-top-section h2 {
+    font-size: var(--fs-3xl);
+    text-align: end;
+    margin-left: auto;
 }
 
-.skill-box{
+#skills-top-section h2 span {
+    display: flex;
+    align-items: center;
+
+}
+
+#skills-top-section h2 span div {
+    background-color: var(--main-clr);
+    height: 5px;
+    border-radius: 5px;
+}
+
+#skills-bottom-section {
+    gap: calc(12px + 0.25rem);
+}
+
+.skill-box {
     border: 2px solid var(--dark-clr);
     border-radius: 12px;
-    aspect-ratio: 2/1.25;
+    
+    min-height: 300px;
     position: relative;
     overflow: hidden;
     padding-inline: calc(18px + 0.5rem);
-    padding-block: calc(18px + 0.5rem);
+    padding-top: calc(18px + 0.5rem);
+    padding-bottom: calc(18px + 1.5rem);
     display: flex;
-   
+
     align-items: center;
     flex-direction: column;
     z-index: 1;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.skill-box::before{
+.skill-box:nth-of-type(1){
+    background-color: var(--shade-clr-1);
+}
+.skill-box:nth-of-type(2){
+    background-color: var(--shade-clr-2);
+}
+
+.skill-box:nth-of-type(3){
+    background-color: var(--shade-clr-3);
+}
+.skill-box-info {
     position: absolute;
-    content: '';
     background-color: var(--dark-clr);
-    width: 5%;
-    height: 30%;
-    right: 0;
-    top:35%;
-   
-    border-top-left-radius: 12px;
-    border-bottom-left-radius: 12px;
-    transition: width 0.3s ease-in-out, height 0.3s ease-in-out, top 0.3s ease-in-out;
-}
 
-.skill-box:hover{
-    /* transform: translateY(-5px); */
-    box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.2),0px 12px 17px 2px rgba(0,0,0,0.14),0px 5px 22px 4px rgba(0,0,0,0.12);
-}
-
-.skill-box:hover::before{
     width: 100%;
     height: 100%;
+    right: 0;
     top: 0;
+    transform-origin: right;
+    transform: scale(0.05, 0.4);
+
+    transition: transform 0.3s ease-in-out;
 }
-.skill-box h3{
+
+.skill-box:hover {
+    /* transform: translateY(-5px); */
+    box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.2), 0px 12px 17px 2px rgba(0, 0, 0, 0.14), 0px 5px 22px 4px rgba(0, 0, 0, 0.12);
+}
+
+.skill-box:hover .skill-box-info {
+    transform: scale(1, 1);
+
+}
+
+.skill-box:hover .skill-box-info .skill-box-info-p {
+    color: var(--light-clr);
+    transition: color 0.5s ease-in-out;
+}
+
+.skill-box h3 {
     text-align: start;
     width: 100%;
     font-weight: 600;
     text-transform: uppercase;
-    
+
     margin-bottom: calc(12px + 0.5rem);
 }
 
-.skill-box p{
+.skill-box p {
     margin-bottom: 0;
     text-align: start;
     height: fit-content;
-    font-size: var(--fs-sm);
+    font-size: var(--fs-base);
 }
 
+.skill-box-info-p {
+    color: transparent;
+    transition: color 0.2s ease-in-out;
+}
 
-.skill-description-container{
+.skill-description-container {
     display: flex;
+
+}
+
+#skills-divider {
+    align-self: center;
+    width: 100%;
+    border-radius: 12px;
+    margin-block: calc(64px + 1rem);
+    height: 5px;
+    background-color: var(--main-clr);
+}
+
+@media (width < 576px) {
+    #skills-top-section h2 {
+        font-size: var(--fs-2xl);
+        text-align: start;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    #skills-top-section {
+        min-height: auto;
+    }
+
+    .skill-box {
+        
+        padding-inline: calc(9px + 0.5rem);
+        padding-top: calc(9px + 0.5rem);
+        padding-bottom: calc(9px + 1.5rem);
+    }
+    #skills-top-section h2 {
+        text-align: end;
+    
+    }
+
+    #skills-top-section h2 span {
+        text-align: end;
+        color: var(--main-clr);
+    }
+    #skills-top-section h2 span {
+        justify-content: flex-end;
+    }
+
+    .skill-box h3 {
+        font-weight: 500;
+    }
+
+    .skill-box p {
+        
+        font-size: var(--fs-sm);
+    }
+}
+
+@media (width < 400px) {
+    #skills-top-section h2 {
+        font-size: var(--fs-lg);
+        
+    }
+
     
 }

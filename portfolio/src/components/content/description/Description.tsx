@@ -67,10 +67,10 @@ export default function Description({ onIntersectionChange }: ComponentProps) {
         <section
             ref={homeRef}
             id="home"
-            className="description-container d-flex justify-content-center align-items-center flex-wrap flex-column"
+            className="description-section d-flex justify-content-center align-items-center flex-wrap flex-column"
         >
             <div
-                className="col-10 position-relative d-flex flex-column"
+                className="col-11 col-xxl-10 position-relative d-flex flex-column"
                 id="description-box"
             >
                 <motion.ul className="description">
@@ -126,7 +126,7 @@ export default function Description({ onIntersectionChange }: ComponentProps) {
                     </motion.p>
                 </motion.ul>
                 <motion.div
-                    className="contact-btn-container col-12 col-lg-4 d-flex"
+                    className="contact-btn-container col-12 col-xl-4 d-flex"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: animationDuration, delay: animationDelay }}
@@ -150,14 +150,13 @@ export default function Description({ onIntersectionChange }: ComponentProps) {
                         onClick={() => handleSectionClick("footer")}
                     ></Button>
                 </motion.div>
-
-                <div
-                    className="col-12 d-flex justify-content-center justify-content-lg-end align-items-center column-gap-4"
+                {windowWidth > 390 && (<div
+                    className="col-12 d-flex justify-content-center justify-content-lg-end align-items-center column-gap-4 "
                     id="description-skills-container"
                 >
                     <motion.div
                         className="skill-container"
-                        initial={{ opacity: 0, translateX: 100 }}
+                        initial={{ opacity: 0, translateX: 50 }}
                         whileInView={{ opacity: 1, translateX: 0 }}
                         transition={{
                             duration: animationDuration,
@@ -175,7 +174,7 @@ export default function Description({ onIntersectionChange }: ComponentProps) {
 
                     <motion.div
                         className="skill-container"
-                        initial={{ opacity: 0, translateX: 100 }}
+                        initial={{ opacity: 0, translateX: 50 }}
                         whileInView={{ opacity: 1, translateX: 0 }}
                         transition={{
                             duration: animationDuration,
@@ -193,7 +192,7 @@ export default function Description({ onIntersectionChange }: ComponentProps) {
 
                     <motion.div
                         className="skill-container"
-                        initial={{ opacity: 0, translateX: 100 }}
+                        initial={{ opacity: 0, translateX: 50 }}
                         whileInView={{ opacity: 1, translateX: 0 }}
                         transition={{
                             duration: animationDuration,
@@ -211,7 +210,7 @@ export default function Description({ onIntersectionChange }: ComponentProps) {
 
                     <motion.div
                         className="skill-container"
-                        initial={{ opacity: 0, translateX: 100 }}
+                        initial={{ opacity: 0, translateX: 50 }}
                         whileInView={{ opacity: 1, translateX: 0 }}
                         transition={{
                             duration: animationDuration,
@@ -229,7 +228,7 @@ export default function Description({ onIntersectionChange }: ComponentProps) {
 
                     <motion.div
                         className="skill-container"
-                        initial={{ opacity: 0, translateX: 100 }}
+                        initial={{ opacity: 0, translateX: 50 }}
                         whileInView={{ opacity: 1, translateX: 0 }}
                         transition={{
                             duration: animationDuration,
@@ -247,7 +246,7 @@ export default function Description({ onIntersectionChange }: ComponentProps) {
 
                     <motion.div
                         className="skill-container"
-                        initial={{ opacity: 0, translateX: 100 }}
+                        initial={{ opacity: 0, translateX: 50 }}
                         whileInView={{ opacity: 1, translateX: 0 }}
                         transition={{
                             duration: animationDuration,
@@ -262,25 +261,32 @@ export default function Description({ onIntersectionChange }: ComponentProps) {
                         <div className="skill-icon" />
                         <p className="skill-icon-name">Next.js</p>
                     </motion.div>
-                </div>
-            </div>
+                </div>)}
 
-            <motion.div
-                className="scroll-banner col-12"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: animationDuration, delay: animationDelay }}
-                viewport={{ once: true }}
-            >
-                <div className="scroll-link col-12">
-                    <div className="">
-                        <div
-                            className="mouse"
-                            onClick={() => handleSectionClick("about")}
-                        ></div>
-                    </div>
-                </div>
-            </motion.div>
+            </div>
+            {windowWidth > 768 &&
+                (
+                    <motion.div
+                        className="scroll-banner col-12"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ duration: animationDuration, delay: animationDelay }}
+                        viewport={{ once: true }}
+                    >
+                        <div className="scroll-link col-12">
+                            <div className="">
+                                <div
+                                    className="mouse"
+                                    onClick={() => handleSectionClick("about")}
+                                ></div>
+                            </div>
+                        </div>
+                    </motion.div>
+                )
+
+            }
+
+
         </section>
     );
 }

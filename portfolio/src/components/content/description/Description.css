@@ -1,4 +1,12 @@
 /* DESCRIPTION------------------------- */
+.description-section {
+    --_icon-height: 60px;
+    --_icon-text-offset: calc(var(--_icon-height)/4);
+    min-height: 100svh;
+    position: relative;
+    background-color: var(--shade-clr-1);
+    
+}
 .welcome-box {
     background-color: var(--main-clr);
     width: 3rem;
@@ -7,20 +15,16 @@
 
 .welcome-tag {
     font-size: var(--fs-sm);
-    font-weight: 500;
+    font-weight: 600;
     margin: 0;
-    color: var(--dark-clr);
+    color: var(--main-clr);
     text-transform: uppercase;
     letter-spacing: 0.375em;
     text-align: start;
     line-height: 0.9;
 }
 
-.description-container {
-    min-height: 100svh;
-    position: relative;
-    background-color: var(--shade-clr-1);
-}
+
 
 .description {
     width: 100%;
@@ -84,8 +88,8 @@
 .quick-btn {
 
     font-size: var(--fs-base) !important;
-    min-height: 50px;
-    width: 100% !important;
+    min-height: 70px;
+    
     border: var(--btn-border-size) solid var(--main-clr) !important;
     border-radius: 6px !important;
     z-index: 1;
@@ -188,7 +192,7 @@
 
 .skill-container{
     
-    height: 60px;
+    height: var(--_icon-height);
     aspect-ratio: 1/1;
     position: relative;
     
@@ -268,8 +272,8 @@
 .skill-icon-name{
     position: absolute;
     font-size: var(--fs-base);
-    left: -15px;
-    right: -15px;
+    left: calc(var(--_icon-text-offset) - 2*var(--_icon-text-offset));
+    right: calc(var(--_icon-text-offset) - 2*var(--_icon-text-offset));
     transform: translateY(-30px);
     
     color: transparent;
@@ -365,8 +369,19 @@
     }
 }
 
+@media(orientation: portrait) and (width > 576px){
+    #description-skills-container{
+       
+         bottom: -200px;
+        
+     }
+}
+
 
 @media (width < 576px) {
+    #home{
+        padding-block: calc(66px + 1rem);
+    }
     .welcome-tag{
         font-size: var(--fs-xs);
         
@@ -374,18 +389,26 @@
 
     .description-tag{
         font-size: var(--fs-sm);
+        
     }
 
     .description-title{
         letter-spacing: 0.04em !important;
+        font-size: var(--fs-3xl);
+        
     }
 
     #outlined-text{
         letter-spacing: 0.04em !important;
     }
 
+    #description-skills-container{
+        height: fit-content;
+        bottom: -75px;
+    }
+
     .skill-container{
-        height: 42px;
+        --_icon-height: 36px;
     }
 
     .skill-icon-name{
@@ -396,8 +419,8 @@
 
 
     .quick-btn {
-
+        min-height: 50px;
         font-size: var(--fs-sm) !important;
-        
+        aspect-ratio: 2.5/0.5;
     }
 }

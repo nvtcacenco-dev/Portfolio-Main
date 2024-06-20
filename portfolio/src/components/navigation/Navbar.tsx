@@ -1,13 +1,19 @@
 import { Link } from "react-scroll";
 import "./Navbar.css";
-import { SvgIcon } from "@mui/material";
+import { Collapse, SvgIcon } from "@mui/material";
 import { useContext, useEffect, useState, useRef } from "react";
 import { handleSectionClick } from "../../model/functions";
 import {
     LanguageContext,
     LanguageContextType,
 } from "../../model/LanguageContext";
-import { Language, navStrings } from "../../model/types";
+import { Language, languageString, navStrings } from "../../model/types";
+import { Squash as Hamburger } from 'hamburger-react';
+import HomeIcon from '@mui/icons-material/Home';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import WorkIcon from '@mui/icons-material/Work';
+import SpeedIcon from '@mui/icons-material/Speed';
+import LanguageIcon from '@mui/icons-material/Language';
 
 interface NavbarProps {
     activeSection: string;
@@ -18,15 +24,51 @@ export default function Navbar({ activeSection }: NavbarProps) {
 
     const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
 
+    const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
+
+    const [elementHeight, setElementHeight] = useState<number>(0);
+
     const { language, setLanguage } = useContext<LanguageContextType>(LanguageContext);
+
+    const widthSM = 576;
+
+    function IconSwitch(iconName: string) {
+        switch (iconName) {
+            case "home":
+                return <HomeIcon />
+            case "about me":
+                return <AccountCircleIcon />
+            case "projects":
+                return <WorkIcon />
+            case "skills":
+                return <SpeedIcon />
+            default:
+                break;
+        }
+    }
 
     const navLinkMap = navStrings.map((link, index) => (
         <li key={index} className="">
             <button
-                className={`nav-link ${activeSection === link.stringName ? "active" : ""}`}
+                className={`nav-link  ${activeSection === link.stringName ? "active" : ""}`}
                 onClick={() => handleSectionClick(link.stringName)}
             >
-                {link.stringRecord[language]}
+                {windowWidth < widthSM ? (
+                    <div className="d-flex align-items-center column-gap-2 px-2">
+                        {IconSwitch(link.stringName)}
+                        <p className="mb-0">
+                            {link.stringRecord[language]}
+                        </p>
+                    </div>
+
+                ) : (
+                    <>{link.stringRecord[language]}</>
+                )
+
+                }
+
+
+
             </button>
         </li>
     ));
@@ -42,8 +84,13 @@ export default function Navbar({ activeSection }: NavbarProps) {
         changeNavBarClr();
     };
 
+    const handleNavOpen = () => {
+        setIsNavOpen(!isNavOpen);
+    }
+
     window.addEventListener("scroll", handleScroll);
     const navName = navClass === true ? "navbar-changed" : "";
+    const expandedNavName = isNavOpen ? "nav-expanded" : "nav-collapsed";
     const enLangBtnName = language === "en" ? "lang-btn-active" : "";
     const dkLangBtnName = language === "dk" ? "lang-btn-active" : "";
 
@@ -61,8 +108,9 @@ export default function Navbar({ activeSection }: NavbarProps) {
 
     useEffect(() => {
         function handleLangPrefStorage() {
-            const storedLanguage = localStorage.getItem("language");
-            if (!storedLanguage) {
+            const storedLanguage = localStorage.getItem('language');
+            console.log(storedLanguage);
+            if (!storedLanguage || localStorage.getItem('language') === '') {
                 localStorage.setItem("language", JSON.stringify(Language.ENGLISH));
                 setLanguage(Language.ENGLISH);
             }
@@ -70,12 +118,28 @@ export default function Navbar({ activeSection }: NavbarProps) {
         handleLangPrefStorage();
     }, [language]);
 
+    useEffect(() => {
+        function handleCollapsedNavPosition() {
+            const collapsedNavElement = document.getElementById('nav-links-container-sm');
+            if (collapsedNavElement && isNavOpen) {
+                setElementHeight(collapsedNavElement.offsetHeight);
+            }
+        }
+
+        handleCollapsedNavPosition();
+
+    }, [windowWidth, isNavOpen])
+
+
+
+
     return (
         <nav
-            className={`${navName} col-12 position-fixed top-0 d-flex justify-content-center `}
+            className={`${navName} col-12 position-fixed top-0 d-flex justify-content-center align-items-center `}
             id="custom-nav"
         >
-            <div className="col-10 d-flex justify-content-between">
+            <div className="col-11 col-lg-10 d-flex justify-content-between align-items-center h-100 position-relative z-1" >
+                
                 <div className="logo d-flex justify-content-center align-items-center">
                     <a href="/">
                         <SvgIcon>
@@ -96,7 +160,9 @@ export default function Navbar({ activeSection }: NavbarProps) {
                         </SvgIcon>
                     </a>
                 </div>
-                <ul className="d-flex justify-content-center align-items-center h-100 column-gap-4">
+                {windowWidth < widthSM && (<Hamburger size={20} onToggle={handleNavOpen} />)}
+
+                {windowWidth > widthSM && (<ul className="d-flex justify-content-center align-items-center h-100 column-gap-4">
                     {navLinkMap}
                     <li className="">
                         <button
@@ -112,8 +178,37 @@ export default function Navbar({ activeSection }: NavbarProps) {
                             onClick={() => setLanguage(Language.DANISH)}
                         ></button>
                     </li>
-                </ul>
+                </ul>)
+                }
+
             </div>
+
+            {windowWidth < widthSM && (<div id="nav-links-container-sm" className={`d-flex ${expandedNavName}`} style={{ bottom: -elementHeight }}>
+
+                <ul className="d-flex flex-column h-100 justify-content-center">
+                    {navLinkMap}
+                    <hr className="m-0"/>
+                    <li className="d-flex align-items-center column-gap-2 px-2">
+                        <LanguageIcon/>
+                        <p className="mb-0 me-auto">{languageString[language]}</p>
+                        <button
+                            className={`nav-link lang-btn ${enLangBtnName}`}
+                            id="btn-en"
+                            onClick={() => setLanguage(Language.ENGLISH)}
+                        />
+                        <button
+                            className={`nav-link lang-btn ${dkLangBtnName}`}
+                            id="btn-dk"
+                            onClick={() => setLanguage(Language.DANISH)}
+                        />
+                    </li>
+
+
+                </ul>
+
+            </div>)}
+
+
         </nav>
     );
 }

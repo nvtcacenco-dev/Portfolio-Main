@@ -18,10 +18,10 @@ export const LanguageContextProvider: FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [language, setLanguage] = useState<Language>(() => {
-    const storedLanguage = localStorage.getItem("language");
-    if(!storedLanguage){
+    
+    
       localStorage.setItem("language", JSON.stringify(Language.ENGLISH));
-  }
+      const storedLanguage = localStorage.getItem("language");
     return storedLanguage ? JSON.parse(storedLanguage) : null;
   });
  

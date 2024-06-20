@@ -1,4 +1,7 @@
 .section-title{
+    --_fs-page-title: clamp(8.77rem, 10.14vw + 7.9rem, 164px + 1vw);
+    --_fs-page-title-sm: clamp(5.84rem,7.14vw + 5.1rem,86px + 1vw);
+    
     writing-mode: vertical-rl;
     
     text-orientation: mixed;
@@ -7,7 +10,7 @@
     margin: 0;
     margin-block: auto;
     color: var(--faded-clr);
-    font-size: var(--fs-8xl) !important;
+    font-size: var(--_fs-page-title);
     user-select: none;
     z-index: 0;
 }
@@ -19,4 +22,18 @@
 .title-right{
     right: 0;
     transform: rotate(180deg);
+}
+
+
+
+@media (width < 576px) or (height < 900px) {
+    .section-title{
+        font-size: var(--_fs-page-title-sm) !important;
+    }
+}
+
+@media (width < 400px) {
+    .section-title{
+        font-size: var(--_fs-page-title-sm) !important;
+    }
 }

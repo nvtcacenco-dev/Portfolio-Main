@@ -40,7 +40,7 @@
     border: 2px solid var(--dark-clr);
     border-radius: 12px;
     
-    min-height: 300px;
+    min-height: calc(280px + 1rem);
     position: relative;
     overflow: hidden;
     padding-inline: calc(18px + 0.5rem);
@@ -142,6 +142,7 @@
 
     .skill-box {
         
+        min-height: calc(200px + 1rem);
         padding-inline: calc(9px + 0.5rem);
         padding-top: calc(9px + 0.5rem);
         padding-bottom: calc(9px + 1.5rem);
@@ -161,6 +162,7 @@
 
     .skill-box h3 {
         font-weight: 500;
+        font-size: var(--fs-md);
     }
 
     .skill-box p {
@@ -172,7 +174,9 @@
 @media (width < 400px) {
     #skills-top-section h2 {
         font-size: var(--fs-lg);
-        
+    }
+    #skills-top-section h2 span div {
+        height: 3px;
     }
 
     

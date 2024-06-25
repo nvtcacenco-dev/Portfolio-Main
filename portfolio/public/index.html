@@ -1,22 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/logo_icon50x50.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo_icon50x50.png" />
-    
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-   
-    <title>Nicolae Tcacenco</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="%PUBLIC_URL%/logo_icon_192.png" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description"
+    content="Explore my portfolio, showcasing skills in HTML, CSS, JavaScript, React and more. Get in touch for your next project!" />
+  <meta name="keywords"
+    content="frontend developer, web developer, HTML, CSS, JavaScript, TypeScript, React, MERN, Express, Node.js, Node, MongoDB, Next.js, Next, portfolio, Nicolae Tcacenco">
+  <link rel="canonical" href="https://www.ntcacenco.dk" />
+  <meta name="author" content="Nicolae Tcacenco">
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Nicolae Tcacenco",
+      "jobTitle": "Web & Frontend Developer",
+      "url": "https://www.ntcacenco.dk",
+      "sameAs": [
+        "https://www.linkedin.com/in/nicolae-tcacenco/",
+        "https://github.com/nvtcacenco-dev"
+      ],
+      "image": "https://ik.imagekit.io/nvtcacenco/Portfolio/my_img2.webp",
+      "description": "Driven by passion, focused on excellence.",
+      "email": "mailto:nvtcacenco.dev@gmail.com",
+      "telephone": "+4522324548"
+    }
+  </script>
+
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Nicolae Tcacenco Portfolio",
+        "url": "https://www.ntcacenco.dk"
+      }
+  </script>
+
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Nicolae Tcacenco - Web & Frontend Developer">
+  <meta property="og:description"
+    content="Explore my portfolio, showcasing skills in HTML, CSS, JavaScript, React and more. Get in touch for your next project!">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.ntcacenco.dk">
+  <meta property="og:image" content="%PUBLIC_URL%/logo_icon_512.png">
+  <meta property="og:image:alt" content="Portfolio Preview">
+
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nicolae Tcacenco - Web & Frontend Developer">
+  <meta name="twitter:description"
+    content="Explore my portfolio, showcasing skills in HTML, CSS, JavaScript, React and more. Get in touch for your next project!">
+  <meta name="twitter:image" content="%PUBLIC_URL%/logo_icon_512.png">
+
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo_icon_192.png" />
+
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+  <!-- Preconnect for external resources -->
+  <link rel="preconnect" href="https://ik.imagekit.io">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Critical CSS inline -->
+  <style>
+    /* Critical CSS styles for root & App */
+    html {
+      scroll-behavior: smooth;
+      scrollbar-width: thin !important;
+      scrollbar-color: var(--main-clr) var(--light-clr) !important;
+      --scrollbar-width-legacy: 8px !important;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Kanit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
+    }
+    .content-container{
+      display: flex;
+      padding: 0;
+      flex-direction: column;
+      padding-top: 100px;
+      width: 100%;
+      position: relative;
+    }
+
+    /* Critical CSS styles for Navbar */
+    nav {
+      --navbar-height: 100px;
+      background-color: var(--shade-clr-1);
+      height: var(--navbar-height);
+      z-index: 4;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      font-size: var(--fs-base);
+      font-weight: 400;
+      cursor: pointer;
+      color: var(--dark-clr);
+      text-transform: capitalize;
+      letter-spacing: normal;
+    }
+
+    .lang-btn {
+      aspect-ratio: 22/18;
+      min-width: 24px;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      background-size: contain !important;
+      margin-top: 2px;
+      border-bottom: 3px solid transparent !important;
+    }
+
+    #btn-en {
+      background-image: url('../../img/flag_US.svg');
+    }
+
+    #btn-dk {
+      background-image: url('../../img/flag_DK.svg');
+    }
+
+    nav div ul {
+      position: relative;
+    }
+
+    .logo {
+      width: calc(48px + 2vw);
+      cursor: pointer;
+    }
+
+    .logo svg {
+      height: 100%;
+      width: 100%;
+    }
+
+    #nav-links-container-sm {
+      width: 100%;
+      background-color: var(--light-clr);
+      position: absolute;
+      z-index: 0;
+      left: 0;
+      transition: transform 0.3s ease-in-out;
+      transform-origin: top;
+    }
+
+    .nav-collapsed {
+      transform: scaleY(0);
+    }
+
+    @media (max-width: 576px) {
+      nav {
+        height: 66px;
+        background-color: var(--light-clr);
+      }
+
+      .nav-link p {
+        width: fit-content;
+      }
+
+      .logo {
+        height: 20px;
+      }
+
+      .logo a {
+        height: 100%;
+        width: 100%;
+        display: flex;
+      }
+    }
+
+    /* Critical CSS styles for Description */
+    .description-section {
+      --_icon-height: 60px;
+      --_icon-text-offset: calc(var(--_icon-height)/2);
+      min-height: 100svh;
+      position: relative;
+      background-color: var(--shade-clr-1);
+    }
+    .welcome-box {
+      background-color: var(--main-clr);
+      width: 3rem;
+      height: 0.25rem;
+    }
+    .welcome-tag {
+      font-size: var(--fs-sm);
+      font-weight: 600;
+      margin: 0;
+      color: var(--main-clr);
+      text-transform: uppercase;
+      letter-spacing: 0.375em;
+      text-align: start;
+      line-height: 0.9;
+      opacity: 0;
+      transform: translateY(-100px);
+    }
+    .description {
+      width: 100%;
+    }
+    #description-box {
+      position: relative;
+    }
+    .description-title {
+      margin: 0;
+      text-align: start;
+      color: var(--dark-clr);
+      text-transform: uppercase;
+      font-size: var(--fs-6xl);
+      font-weight: 700;
+      padding: 0;
+      line-height: 0.9;
+      transform: translateY(100px);
+      opacity: 0;
+
+    }
+
+    #outlined-text {
+      color: transparent;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: var(--dark-clr);
+      transform: translateX(200px);
+      opacity: 0;
+    }
+
+    .contact-btn-container, .scroll-banner{
+      opacity: 0;
+    }
+
+    .skill-container{
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    .description-tag {
+      margin: 0;
+      margin-top: 1.2rem;
+      margin-bottom: 2.4rem;
+      text-align: start;
+      opacity: 0;
+    }
+
+    .contact-btn-container {
+      background-color: transparent;
+      column-gap: 1rem;
+      row-gap: 1rem;
+    }
+
+    .quick-btn {
+      font-size: var(--fs-base) !important;
+      min-height: 70px;
+      border: var(--btn-border-size) solid var(--main-clr) !important;
+      border-radius: 6px !important;
+      z-index: 1;
+      position: relative !important;
+      outline: 0;
+      overflow: hidden;
+      aspect-ratio: 2/0.5;
+    }
+
+    .fill {
+      color: var(--dark-clr) !important;
+    }
+
+    .slide {
+      background-color: transparent !important;
+      border: var(--btn-border-size) solid var(--dark-clr) !important;
+    }
+
+    .slide:after {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      content: attr(data-content1);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      text-align: center;
+      transition: all 400ms cubic-bezier(0.680, -0.550, 0.265, 1.550);
+      color: var(--dark-clr) !important;
+    }
+  </style>
+
+  <!-- External CSS preloading -->
+  <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+  <!-- Font loading (replace with actual font link) -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" />
+
+  <!-- Actual CSS file link -->
+  <link rel="stylesheet" href="%PUBLIC_URL%/static/css/main.a9bce0d0.css" />
+
+  <title>Nicolae Tcacenco - Web & Frontend Developer</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+  <!-- Your JavaScript imports and other resources can go here -->
+
+</body>
+
 </html>

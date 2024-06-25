@@ -61,12 +61,13 @@ export default function About({ onIntersectionChange }: ComponentProps) {
     
 
     return (
-        <section ref={aboutRef} id='about' className='about-section d-flex justify-content-center align-items-center col-12 position-relative'>
-            <div className='about-container col-11 col-xxl-9 d-flex px-lg-0 flex-wrap row-gap-5 justify-content-center align-items-center'>
-                {handleLayout()}
-            </div>
-
+        <section aria-labelledby="about-section-title" ref={aboutRef} id='about' className='about-section d-flex justify-content-center align-items-center col-12 position-relative'>
             <PageTitle title={'about'} dir={'right'} />
+            <article className='about-container col-11 col-xxl-9 d-flex px-lg-0 flex-wrap row-gap-5 justify-content-center align-items-center'>
+                {handleLayout()}
+            </article>
+
+            
 
         </section>
     )

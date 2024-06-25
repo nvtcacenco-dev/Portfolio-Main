@@ -26,9 +26,6 @@ nav {
     text-transform: capitalize;
     letter-spacing: normal !important;
 }
-
-
-
 .lang-btn {
     aspect-ratio: 22/18;
     min-width: 24px;
@@ -81,6 +78,10 @@ nav div ul {
 .hamburger-react{
     margin-top: 1px;
     
+}
+
+.hamburger-react:focus{
+    border: 1px solid var(--main-clr);
 }
 
 #nav-links-container-sm{

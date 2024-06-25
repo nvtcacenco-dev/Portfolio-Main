@@ -33,6 +33,7 @@ export default function Projects({ onIntersectionChange }: ComponentProps) {
     }, [onIntersectionChange]);
     return (
         <section
+            aria-labelledby="projects-section-title"
             ref={projectsRef}
             id="projects"
             className="projects-section d-flex justify-content-center align-items-center col-12 position-relative"

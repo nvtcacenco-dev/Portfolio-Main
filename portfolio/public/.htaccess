@@ -1,11 +1,22 @@
 <IfModule mod_rewrite.c>
-
   RewriteEngine On
+
+  # Redirect non-www to www
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP_HOST} !^www\. [NC]
+  RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Specify the RewriteBase
   RewriteBase /
+
+  # Don't rewrite requests for index.html
   RewriteRule ^index\.html$ - [L]
+
+  # Conditions to ensure the request is not for an existing file, directory, or symbolic link
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-l
-  RewriteRule . /index.html [L]
 
+  # Fallback all other requests to index.html
+  RewriteRule . /index.html [L]
 </IfModule>

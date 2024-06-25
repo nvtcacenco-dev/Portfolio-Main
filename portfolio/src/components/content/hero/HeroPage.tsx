@@ -1,4 +1,4 @@
-import "./Description.css";
+import './HeroPage.css'
 
 import { Button } from "@mui/material";
 import { motion } from "framer-motion";
@@ -20,12 +20,12 @@ import {
     welcomeTagString,
 } from "../../../model/types";
 
-export default function Description({ onIntersectionChange }: ComponentProps) {
+export default function HeroPage({ onIntersectionChange }: ComponentProps) {
     const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
     const { language } = useContext<LanguageContextType>(LanguageContext);
     const homeRef = useRef<HTMLDivElement>(null);
-    const animationDuration = 1;
-    const animationDelay = 2;
+    const animationDuration = 0.75;
+    const animationDelay = 1.75;
     useEffect(() => {
         const handleResize = () => {
             setWindowWidth(window.innerWidth);
@@ -67,54 +67,58 @@ export default function Description({ onIntersectionChange }: ComponentProps) {
         <section
             ref={homeRef}
             id="home"
-            className="description-section d-flex justify-content-center align-items-center flex-wrap flex-column"
+            aria-labelledby="hero-section-title"
+            className="hero-section d-flex justify-content-center align-items-center flex-wrap flex-column"
         >
-            <div
+            <article
                 className="col-11 col-xxl-10 position-relative d-flex flex-column"
                 id="description-box"
             >
-                <motion.ul className="description">
-                    <motion.p
-                        className="welcome-tag"
-                        initial={{ opacity: 0, translateY: -100 }}
-                        whileInView={{ opacity: 1, translateY: 0 }}
-                        transition={{ duration: animationDuration, delay: 0.4 }}
-                        viewport={{ once: true }}
-                    >
-                        &#8212; {welcomeTagString[language]}
-                    </motion.p>
-                    <motion.p
-                        className="description-title"
-                        initial={{ opacity: 0, translateY: 100 }}
-                        whileInView={{ opacity: 1, translateY: 0 }}
-                        transition={{ duration: animationDuration, delay: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        Nicolae Tcacenco
-                    </motion.p>
+                <motion.div className="description">
 
-                    <motion.p
-                        className="description-title"
-                        id="outlined-text"
-                        initial={{ opacity: 0, translateX: 200 }}
-                        whileInView={{ opacity: 1, translateX: 0 }}
-                        transition={{
-                            duration: animationDuration,
-                            delay: animationDuration + 0.3,
-                        }}
-                        viewport={{ once: true }}
-                    >
-                        FRONTEND {windowWidth < 576 && <br />} & WEB
-                    </motion.p>
-                    <motion.p
-                        className="description-title"
-                        initial={{ opacity: 0, translateY: 100 }}
-                        whileInView={{ opacity: 1, translateY: 0 }}
-                        transition={{ duration: animationDuration, delay: 0.2 }}
-                        viewport={{ once: true }}
-                    >
-                        {language && devString[language]}
-                    </motion.p>
+                    <div role="paragraph">
+                        <motion.p
+                            className="welcome-tag"
+                            initial={{ opacity: 0, translateY: -100 }}
+                            whileInView={{ opacity: 1, translateY: 0 }}
+                            transition={{ duration: animationDuration, delay: 0.4 }}
+                            viewport={{ once: true }}
+                        >
+                            &#8212; {welcomeTagString[language]}
+                        </motion.p>
+                        <motion.h1
+                            id="hero-section-title"
+                            className="description-title"
+                            initial={{ opacity: 0, translateY: 100 }}
+                            whileInView={{ opacity: 1, translateY: 0 }}
+                            transition={{ duration: animationDuration, delay: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            Nicolae Tcacenco
+                        </motion.h1>
+                        <motion.p
+                            className="description-title"
+                            id="outlined-text"
+                            initial={{ opacity: 0, translateX: 200 }}
+                            whileInView={{ opacity: 1, translateX: 0 }}
+                            transition={{
+                                duration: animationDuration,
+                                delay: animationDuration,
+                            }}
+                            viewport={{ once: true }}
+                        >
+                            FRONTEND {windowWidth < 576 && <br />} & WEB
+                        </motion.p>
+                        <motion.p
+                            className="description-title"
+                            initial={{ opacity: 0, translateY: 100 }}
+                            whileInView={{ opacity: 1, translateY: 0 }}
+                            transition={{ duration: animationDuration, delay: 0.2 }}
+                            viewport={{ once: true }}
+                        >
+                            {language && devString[language]}
+                        </motion.p>
+                    </div>
                     <motion.p
                         className="description-tag"
                         initial={{ opacity: 0 }}
@@ -124,7 +128,7 @@ export default function Description({ onIntersectionChange }: ComponentProps) {
                     >
                         {taglineString[language]}
                     </motion.p>
-                </motion.ul>
+                </motion.div>
                 <motion.div
                     className="contact-btn-container col-12 col-xl-4 d-flex"
                     initial={{ opacity: 0 }}
@@ -133,6 +137,7 @@ export default function Description({ onIntersectionChange }: ComponentProps) {
                     viewport={{ once: true }}
                 >
                     <Button
+                        aria-label="See My Projects"
                         disableRipple
                         className="quick-btn fill"
                         onClick={() => handleSectionClick("projects")}
@@ -143,6 +148,7 @@ export default function Description({ onIntersectionChange }: ComponentProps) {
                         </p>
                     </Button>
                     <Button
+                        aria-label="Hire Me"
                         disableRipple
                         data-content1={btnHireMeString[language]}
                         data-content2={btnGetMyInfoString[language]}
@@ -150,7 +156,7 @@ export default function Description({ onIntersectionChange }: ComponentProps) {
                         onClick={() => handleSectionClick("footer")}
                     ></Button>
                 </motion.div>
-                {windowWidth > 390 && (<div
+                {windowWidth > 370 && (<div
                     className="col-12 d-flex justify-content-center justify-content-lg-end align-items-center column-gap-4 "
                     id="description-skills-container"
                 >
@@ -263,7 +269,7 @@ export default function Description({ onIntersectionChange }: ComponentProps) {
                     </motion.div>
                 </div>)}
 
-            </div>
+            </article>
             {windowWidth > 768 &&
                 (
                     <motion.div
@@ -275,10 +281,13 @@ export default function Description({ onIntersectionChange }: ComponentProps) {
                     >
                         <div className="scroll-link col-12">
                             <div className="">
-                                <div
+                                <button
+                                    aria-label="scroll down"
                                     className="mouse"
+                                    role="button"
+                                    tabIndex={0}
                                     onClick={() => handleSectionClick("about")}
-                                ></div>
+                                ></button>
                             </div>
                         </div>
                     </motion.div>

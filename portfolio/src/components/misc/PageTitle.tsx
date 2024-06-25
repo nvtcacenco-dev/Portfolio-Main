@@ -12,6 +12,6 @@ export default function PageTitle({title, dir}: PageTitleProps){
     const titleDir = dir === 'right' ? 'title-right' : 'title-left'
 
     return (
-        <h1 className={`${titleDir} section-title`} >{title}</h1>
+        <h2 className={`${titleDir} section-title`} id={`${title}-section-title`} >{title}</h2>
     )
 }

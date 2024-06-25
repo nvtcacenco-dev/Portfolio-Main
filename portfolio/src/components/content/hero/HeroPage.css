@@ -1,7 +1,7 @@
 /* DESCRIPTION------------------------- */
-.description-section {
+.hero-section {
     --_icon-height: 60px;
-    --_icon-text-offset: calc(var(--_icon-height)/4);
+    --_icon-text-offset: calc(var(--_icon-height)/2);
     min-height: 100svh;
     position: relative;
     background-color: var(--shade-clr-1);
@@ -117,11 +117,13 @@
     color: var(--dark-clr) !important;
 }
 
-.fill:hover {
+.fill:hover, .fill:focus {
     color: var(--light-clr) !important;
 }
 
-.fill:hover:before {
+
+
+.fill:hover:before, .fill:focus:before {
     top: 0;
     border: none !important;
     
@@ -164,19 +166,19 @@
     color: var(--light-clr) !important;
 }
 
-.slide:hover {
+.slide:hover, .slide:focus {
     background: var(--main-clr) !important;
     border: var(--btn-border-size) solid transparent !important;
     color: var(--light-clr) !important;
 }
 
-.slide:hover:before {
+.slide:hover:before, .slide:focus:before {
     left: 0;
     opacity: 1;
     color: var(--light-clr) !important;
 }
 
-.slide:hover:after {
+.slide:hover:after, .slide:focus:after {
     left: 100%;
     opacity: 0;
 }
@@ -272,10 +274,13 @@
 .skill-icon-name{
     position: absolute;
     font-size: var(--fs-base);
+    width: calc(var(--_icon-height)*2);
     left: calc(var(--_icon-text-offset) - 2*var(--_icon-text-offset));
-    right: calc(var(--_icon-text-offset) - 2*var(--_icon-text-offset));
-    transform: translateY(-30px);
     
+    /* left: calc(var(--_icon-text-offset) - 2*var(--_icon-text-offset));
+    right: calc(var(--_icon-text-offset) - 5*var(--_icon-text-offset)); */
+    transform: translateY(-30px);
+    text-align: center;
     color: transparent;
     transition: color 0.2s ease-in-out, transform 0.4s ease-in-out;
 }
@@ -289,6 +294,9 @@
     transform: translateY(3px);
     transition: color 0.6s ease-in-out, transform 0.3s ease-in-out;
 }
+
+
+
 
 
 
@@ -338,6 +346,11 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    background-color: transparent;
+}
+
+.mouse:focus{
+    border-color: var(--main-clr);
 }
 
 .mouse::before {
@@ -352,7 +365,7 @@
     border-radius: 50%;
     opacity: 1;
     animation: wheel 1.3s infinite;
-    -webkit-animation: wheel 1.3s infinite
+    -webkit-animation: wheel 1.3s infinite;
 }
 
 @keyframes wheel {
@@ -422,5 +435,35 @@
         min-height: 50px;
         font-size: var(--fs-sm) !important;
         aspect-ratio: 2.5/0.5;
+    }
+}
+
+
+@media (hover: none), (prefers-reduced-motion) {
+    .skill-container:hover .skill-icon{
+        transform: none;
+    }
+    
+    .skill-container:hover .skill-icon-name{
+        
+        transform: none;
+        transition: none;
+    }
+}
+
+@media (prefers-reduced-motion) {
+    .mouse::before {
+        content: '';
+        width: 5px;
+        height: 5px;
+        position: absolute;
+        top: 7px;
+        left: 48%;
+        transform: translateX(-50%);
+        background-color: var(--main-clr);
+        border-radius: 50%;
+        opacity: 1;
+        animation: none;
+        -webkit-animation: none;
     }
 }

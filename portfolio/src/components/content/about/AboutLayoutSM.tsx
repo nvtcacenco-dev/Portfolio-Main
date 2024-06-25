@@ -11,17 +11,21 @@ import {
     aboutKeywordString3,
     aboutKeywordString4,
     aboutKeywordString5,
-    aboutKeywordString6
+    aboutKeywordString6,
+    aboutMeString,
+    aboutMeEndingString
 } from "../../../model/types";
 import { LanguageContext, LanguageContextType } from "../../../model/LanguageContext";
 import { useContext } from "react";
+import { handleSectionClick } from "../../../model/functions";
+import BulletPoint from "../../misc/BulletPoint";
 
 export default function AboutLayoutSM() {
     const { language } = useContext<LanguageContextType>(LanguageContext);
     return (
         <>
             <div className='col-12 col-xl-7 d-flex align-content-center flex-column'>
-                <h2 className='col-12 mb-5 mb-xl-0'>
+                <h3 className='col-12 mb-5 mb-xl-0'>
                     <motion.p
                         className='mb-0'
                         initial={{ opacity: 0, translateX: -50 }}
@@ -54,7 +58,7 @@ export default function AboutLayoutSM() {
                     >
                         {aboutTaglineStringPart3[language]}
                     </motion.p>
-                </h2>
+                </h3>
 
 
                 <div className='col-12 col-xl-5 px-xl-3 d-flex justify-content-center align-items-end' id='img-container'>
@@ -66,7 +70,14 @@ export default function AboutLayoutSM() {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         viewport={{ once: true }}
                     >
-                        <div id='personal-img'></div>
+                        <img
+                            id='personal-img'
+                            alt='Nicolae Tcacenco'
+                            loading="lazy"
+                            src='https://ik.imagekit.io/nvtcacenco/Portfolio/my_img2.webp?tr=w-600'
+                            srcSet='https://ik.imagekit.io/nvtcacenco/Portfolio/my_img2.webp?tr=w-400 800w,
+                                    https://ik.imagekit.io/nvtcacenco/Portfolio/my_img2.webp?tr=w-300 600w'
+                        />
                         <motion.div
                             id='img-box-style'
                             initial={{ opacity: 0, rotate: 0 }}
@@ -88,52 +99,20 @@ export default function AboutLayoutSM() {
                     >
 
                         <p className='col-11 col-sm-10 col-xl-8 mx-auto mx-xl-0' id='about-description'>
-                            Lorem ipsum dolor sit amet,
-                            consetur adipiscing elit.
-                            In rhoncus leo sed rutrum elementum.
-                            Aenean lectus nisi, feugiat in egestas sed,
-                            blandit sit amet nulla. Sed at mattis arcu,
-                            id luctus tortor. Phasellus ut eros at lectus suscipit rutrum vel a felis.
-                            Nullam convallis lorem neque, at tincidunt odio tempus nec.
-                            Duis pharetra et libero sit amet pharetra. Sed euismod at magna nec ultricies.
-                            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
+                            {aboutMeString[language]}
+                            <br />
+                            <br />
+                            {aboutMeEndingString[language]}
                         </p>
                         <div className='col-12 d-flex' id='contact-me-btn-container'>
-                            <Button className='col-11 col-sm-6 col-xl-5 mx-sm-auto mx-xl-0' id='contact-me-btn'>
+                            <Button className='col-11 col-sm-6 col-xl-5 mx-sm-auto mx-xl-0' id='contact-me-btn' onClick={() => handleSectionClick("footer")}>
                                 <p>{btnContactMeString[language]}</p>
                             </Button>
                         </div>
                         <ul className='col-11 d-flex mt-5 gap-3 flex-wrap mx-auto mx-xl-0'>
-                            <li className='col-lg-3 flex-grow-0 flex-sm-grow-1 flex-xxl-grow-0'>
-                                <div className='col-4'>
-                                    <AddIcon fontSize='large' />
-                                </div>
-                                <p className='mb-0 flex-grow-1'>
-                                    {aboutKeywordString1[language]}
-                                    <br />
-                                    {aboutKeywordString2[language]}
-                                </p>
-                            </li>
-                            <li className='col-lg-3 flex-grow-0 flex-sm-grow-1 flex-xxl-grow-0'>
-                                <div className='col-4'>
-                                    <AddIcon fontSize='large' />
-                                </div>
-                                <p className='mb-0 flex-grow-1'>
-                                    {aboutKeywordString3[language]}
-                                    <br />
-                                    {aboutKeywordString4[language]}
-                                </p>
-                            </li>
-                            <li className='col-lg-3 flex-grow-0 flex-sm-grow-1 flex-xxl-grow-0'>
-                                <div className='col-4'>
-                                    <AddIcon fontSize='large' />
-                                </div>
-                                <p className='mb-0 flex-grow-1'>
-                                    {aboutKeywordString5[language]}
-                                    <br />
-                                    {aboutKeywordString6[language]}
-                                </p>
-                            </li>
+                            <BulletPoint string1={aboutKeywordString1[language]} string2={aboutKeywordString2[language]} className={'about-bullet'}/>
+                            <BulletPoint string1={aboutKeywordString3[language]} string2={aboutKeywordString4[language]} className={'about-bullet'}/>
+                            <BulletPoint string1={aboutKeywordString5[language]} string2={aboutKeywordString6[language]} className={'about-bullet'}/>
                         </ul>
                     </motion.div>
 

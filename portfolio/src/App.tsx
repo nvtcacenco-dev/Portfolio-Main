@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import Description from './components/content/description/Description';
+import HeroPage from './components/content/hero/HeroPage';
 import Skills from './components/content/skills/Skills';
 import { Element } from 'react-scroll';
 import Footer from './components/footer/Footer';
@@ -55,35 +55,19 @@ function App() {
     setActiveSection(sectionName);
   };
   return (
-    <div className="App d-flex flex-column flex-lg-row m-0 overflow-x-hidden">
-
-
+    <>
       <Navbar activeSection={activeSection} />
       <main className='content-container p-0' >
-
-        <Description onIntersectionChange={handleIntersectionChange} />
-
-
+        <HeroPage onIntersectionChange={handleIntersectionChange} />
         <About onIntersectionChange={handleIntersectionChange} />
-
-
         <Projects onIntersectionChange={handleIntersectionChange} />
-
-
-
         <Skills onIntersectionChange={handleIntersectionChange} />
-
-        <Fab className={`${fabName}`} id='floating-action-btn' disabled={!fabClass} onClick={() => setTimeout(function() {window.scrollTo(0, 0);},1)}>
+        <Fab aria-label='Back to top' className={`${fabName}`} id='floating-action-btn' disabled={!fabClass} onClick={() => setTimeout(function() {window.scrollTo(0, 0);},1)}>
           <KeyboardArrowUpIcon fontSize='large' />
         </Fab>
       </main>
-
-
-
-      {/* <Footer/> */}
-
-
-    </div>
+      <Footer/>
+    </>
   );
 }
 

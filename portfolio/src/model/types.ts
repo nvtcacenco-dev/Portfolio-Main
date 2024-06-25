@@ -78,6 +78,18 @@ export const btnGetMyInfoString: Record<Language, string> = {
 };
 
 //ABOUT STRINGS
+export const aboutMeString: Record<Language, string> = {
+  [Language.DANISH]:
+    "Som en passioneret softwareudvikler med specialisering i frontend og webudvikling, brænder jeg for at omdanne idéer til engagerende og brugervenlige oplevelser. Med et skarpt øje for design og en god beherskelse af moderne webteknologier som HTML5, CSS3 og JavaScript, skaber jeg responsive websites og webapplikationer, der ikke kun ser fantastiske ud, men også fungerer problemfrit på tværs af forskellige platforme. Mit mål er at skabe intuitive grænseflader, der forbedrer brugerinteraktionen og efterlader et varigt indtryk.",
+  [Language.ENGLISH]:
+    "As a passionate software developer specializing in frontend and web development, I thrive on transforming ideas into engaging, user-friendly experiences. With a keen eye for design and a strong command of modern web technologies like HTML5, CSS3, and JavaScript, I create responsive websites and web applications that not only look great but also perform seamlessly across various platforms. My goal is to craft intuitive interfaces that enhance user interaction and leave a lasting impression.",
+};
+
+export const aboutMeEndingString: Record<Language, string> = {
+  [Language.DANISH]: "Lad os skabe noget fantastisk sammen!",
+  [Language.ENGLISH]: "Let's build something amazing together!",
+};
+
 export const btnContactMeString: Record<Language, string> = {
   [Language.DANISH]: "Kontakt Mig",
   [Language.ENGLISH]: "Contact Me",
@@ -151,4 +163,71 @@ export const taglineSkillsString3: Record<Language, string> = {
 export const devSkillsString: Record<Language, string> = {
   [Language.DANISH]: "Udvikling",
   [Language.ENGLISH]: "Development",
+};
+
+export const devSkillsFrontendString: Record<Language, string> = {
+  [Language.DANISH]:
+    "Jeg skaber dynamiske brugergrænseflader med JavaScript, TypeScript, React, Next.js, HTML, CSS, Bootstrap og Tailwind. Mit fokus er på at levere responsive, visuelt tiltalende og pixel-perfekte designs, samtidig med at jeg opretholder høje standarder for tilgængelighed og ydeevne.",
+  [Language.ENGLISH]:
+    "I create dynamic user interfaces with JavaScript, TypeScript, React, Next.js, HTML, CSS, Bootstrap, and Tailwind. My focus is on delivering responsive, visually appealing and pixel-perfect designs while maintaining high standards of accessibility and performance.",
+};
+
+export const devSkillsBackendString: Record<Language, string> = {
+  [Language.DANISH]:
+    "Jeg bygger robuste server-side applikationer ved hjælp af Node.js, Express, MongoDB, SQL, Firebase og Next.js. Jeg sikrer effektiv datastyring og problemfri server-side rendering.",
+  [Language.ENGLISH]:
+    "I build robust server-side applications using Node.js, Express, MongoDB, SQL, Firebase, and Next.js. I ensure efficient data management and seamless server-side rendering.",
+};
+
+export const devSkillsAppString: Record<Language, string> = {
+  [Language.DANISH]:
+    "Jeg udvikler højtydende mobilapps med React Native, Java og C#. Min ekspertise spænder over cross-platform løsninger og native funktionalitet til både iOS og Android.",
+  [Language.ENGLISH]:
+    "I develop high-performance mobile apps with React Native, Java, and C#. My expertise spans cross-platform solutions and native functionality for both iOS and Android.",
+};
+
+export const otherSkillsAgileString1: Record<Language, string> = {
+  [Language.DANISH]: "Agile",
+  [Language.ENGLISH]: "Agile",
+};
+
+export const otherSkillsAgileString2: Record<Language, string> = {
+  [Language.DANISH]: "Erfaring",
+  [Language.ENGLISH]: "Experience",
+};
+
+export const otherSkillsClientString1: Record<Language, string> = {
+  [Language.DANISH]: "Klient",
+  [Language.ENGLISH]: "Client",
+};
+
+export const otherSkillsClientString2: Record<Language, string> = {
+  [Language.DANISH]: "Kommunikation",
+  [Language.ENGLISH]: "Communication",
+};
+
+export const otherSkillsGitString1: Record<Language, string> = {
+  [Language.DANISH]: "Version kontrol",
+  [Language.ENGLISH]: "Version control",
+};
+
+export const otherSkillsGitString2: Record<Language, string> = {
+  [Language.DANISH]: "(Git)",
+  [Language.ENGLISH]: "(Git)",
+};
+
+export const otherSkillsTeamString1: Record<Language, string> = {
+  [Language.DANISH]: "Hold samarbejde",
+  [Language.ENGLISH]: "Team collaboration",
+};
+
+export const otherSkillsTeamString2: Record<Language, string> = {
+  [Language.DANISH]: "(Jira, Trello, Slack)",
+  [Language.ENGLISH]: "(Jira, Trello, Slack)",
+};
+//FOOTER STRINGS
+
+export const footerString1: Record<Language, string> = {
+  [Language.DANISH]: "Få Fat på Mig",
+  [Language.ENGLISH]: "Get in Touch",
 };

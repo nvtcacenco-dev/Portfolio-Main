@@ -8,11 +8,23 @@ import {
 } from "../../../model/LanguageContext";
 import {
   ComponentProps,
+  devSkillsAppString,
+  devSkillsBackendString,
+  devSkillsFrontendString,
   devSkillsString,
+  otherSkillsAgileString1,
+  otherSkillsAgileString2,
+  otherSkillsClientString1,
+  otherSkillsClientString2,
+  otherSkillsGitString1,
+  otherSkillsGitString2,
+  otherSkillsTeamString1,
+  otherSkillsTeamString2,
   taglineSkillsString1,
   taglineSkillsString2,
   taglineSkillsString3,
 } from "../../../model/types";
+import BulletPoint from "../../misc/BulletPoint";
 
 export default function Skills({ onIntersectionChange }: ComponentProps) {
   const { language } = useContext<LanguageContextType>(LanguageContext);
@@ -63,11 +75,13 @@ export default function Skills({ onIntersectionChange }: ComponentProps) {
     <section
       ref={skillsRef}
       id="skills"
+      aria-labelledby="skills-section-title"
       className="skills-section d-flex justify-content-center align-items-center col-12 position-relative"
     >
+      <PageTitle title={"skills"} dir={"right"} />
       <div className="skills-container col-11 col-xxl-9 d-flex flex-column">
         <div className="col-12 d-flex align-items-center justify-content-center mb-5 mb-lg-0" id="skills-top-section">
-          <h2 className="text-uppercase ">
+          <h3 className="text-uppercase ">
 
 
             {windowWidth > 576 ? (
@@ -104,7 +118,7 @@ export default function Skills({ onIntersectionChange }: ComponentProps) {
 
             )
             }
-          </h2>
+          </h3>
         </div>
 
         <div
@@ -113,9 +127,9 @@ export default function Skills({ onIntersectionChange }: ComponentProps) {
         >
           <div className="skill-box col-12 col-lg-3 flex-lg-grow-1">
 
-            <h3>
+            <h4>
               Frontend <br /> {devSkillsString[language]}
-            </h3>
+            </h4>
 
             <div className="col-11 skill-description-container flex-wrap">
 
@@ -131,20 +145,15 @@ export default function Skills({ onIntersectionChange }: ComponentProps) {
             </div>
             <div className="skill-box-info p-4">
               <p className="skill-box-info-p">
-                Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit.
-                In rhoncus leo sed rutrum elementum.
-                Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit.
-                In rhoncus leo sed rutrum elementum.
+               {devSkillsFrontendString[language]}
               </p>
             </div>
           </div>
 
           <div className="skill-box col-12 col-lg-3 flex-lg-grow-1">
-            <h3>
+            <h4>
               Backend <br /> {devSkillsString[language]}
-            </h3>
+            </h4>
             <div className="col-11 skill-description-container flex-wrap">
 
               <p className="col-6">{"</>"} Node.js</p>
@@ -157,21 +166,16 @@ export default function Skills({ onIntersectionChange }: ComponentProps) {
             </div>
             <div className="skill-box-info p-4">
               <p className="skill-box-info-p">
-                Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit.
-                In rhoncus leo sed rutrum elementum.
-                Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit.
-                In rhoncus leo sed rutrum elementum.
+              {devSkillsBackendString[language]}
               </p>
             </div>
           </div>
 
           <div className="skill-box col-12 col-lg-3 flex-lg-grow-1">
 
-            <h3>
+            <h4>
               App <br /> {devSkillsString[language]}
-            </h3>
+            </h4>
 
             <div className="col-11 skill-description-container flex-wrap">
 
@@ -190,30 +194,25 @@ export default function Skills({ onIntersectionChange }: ComponentProps) {
             </div>
             <div className="skill-box-info p-4">
               <p className="skill-box-info-p">
-                Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit.
-                In rhoncus leo sed rutrum elementum.
-                Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit.
-                In rhoncus leo sed rutrum elementum.
+              {devSkillsAppString[language]}
               </p>
             </div>
           </div>
         </div>
 
         <div id="skills-divider" className="" />
-        <ul className="d-flex">
-          <li>
-            SEO
-          </li>
-          <li>
-            Agile
-          </li>
+        <ul id="skills-bullet-points" className="d-flex col-12 flex-wrap column-gap-3 row-gap-3">
+          <BulletPoint string1={'SEO'} string2={'(Lighthouse)'} className={'skills-bullet'}/>
+          <BulletPoint string1={otherSkillsAgileString1[language]} string2={otherSkillsAgileString2[language]} className={'skills-bullet'}/>
+          <BulletPoint string1={otherSkillsClientString1[language]} string2={otherSkillsClientString2[language]} className={'skills-bullet'}/>
+          <BulletPoint string1={'API'} string2={'Integration'} className={'skills-bullet'}/>
+          <BulletPoint string1={otherSkillsGitString1[language]} string2={otherSkillsGitString2[language]} className={'skills-bullet'}/>
+          <BulletPoint string1={otherSkillsTeamString1[language]} string2={otherSkillsTeamString2[language]} className={'skills-bullet'}/>
         </ul>
       </div>
 
-      <PageTitle title={"skills"} dir={"right"} />
-      <Paper elevation={3}></Paper>
+      
+      
 
     </section>
   );

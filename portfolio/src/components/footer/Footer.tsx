@@ -1,73 +1,63 @@
-import * as React from 'react';
+
 import './Footer.css';
-import PhoneIcon from '@mui/icons-material/Phone';
-import MailIcon from '@mui/icons-material/Mail';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import { Element } from 'react-scroll';
-import { Tooltip } from '@mui/material';
-import { useState } from 'react';
-
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import MailIcon from '@mui/icons-material/Mail';
+import SmartphoneIcon from '@mui/icons-material/Smartphone';
+import { Paper } from '@mui/material';
+import { footerString1, taglineString } from '../../model/types';
+import { useContext } from 'react';
+import { LanguageContextType, LanguageContext } from '../../model/LanguageContext';
 function Footer() {
-  const [clicked, setClicked] = useState(false);
-  const [clickedStatus, setClickedStatus] = useState<string>('Click to copy');
-  const [textToCopy, setTextToCopy] = useState<string>('');
-
-  function changeClickStatus(textContent: string) {
-    if (!clicked) {
-      setClicked(true);
-      setClickedStatus('Copied!');
-      setTextToCopy(textContent);
-      navigator.clipboard.writeText(textContent);
-    }
-  }
-
-  function resetClickStatus() {
-    if (clicked) {
-      setClicked(false);
-      setClickedStatus('Click to copy');
-      setTextToCopy('');
-    }
-  }
+  const { language } = useContext<LanguageContextType>(LanguageContext);
 
   return (
-    <footer className='footer'>
-      <Element className='footer-container' name='footer'>
-        <Tooltip className='tool-tip' title={clickedStatus} arrow placement='top'>
-          <section
-            onClick={() => changeClickStatus('22324548')}
-            onMouseLeave={resetClickStatus}
-            className='footer-section'
-          >
-            <PhoneIcon className='icon-clr' />
-            <p className='footer-info'>22324548</p>
-          </section>
-        </Tooltip>
-        <Tooltip title={clickedStatus} arrow placement='top'>
-          <section
-            onClick={() => changeClickStatus('nico440b@gmail.com')}
-            onMouseLeave={resetClickStatus}
-            className='footer-section'
-          >
-            <MailIcon className='icon-clr' />
-            <p className='footer-info'>nico440b@gmail.com</p>
-          </section>
-        </Tooltip>
-        <a href='https://dk.linkedin.com/' target='_blank' rel="noopener noreferrer">
-          <section className='footer-section'>
-            <LinkedInIcon className='icon-clr' />
-            <p className='footer-info'>LinkedIn Link</p>
-          </section>
-        </a>
-        <a href='https://github.com/' target='_blank' rel="noopener noreferrer">
-          <section className='footer-section'>
-            <GitHubIcon className='icon-clr' />
-            <p className='footer-info'>Github Link</p>
-          </section>
-        </a>
+    <footer id='footer' className='d-flex flex-column justify-content-center align-items-center'>
+      <div id='footer-map' className='col-12'>
+        <iframe title='My location on Google Maps' className='w-100 h-100' src="https://www.google.com/maps/embed/v1/place?q=Jordbrovej,+Aarhus+N,+Danmark&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&zoom=13">
+        </iframe>
+      </div>
+      <section className='col-11 d-flex justify-content-center align-items-center column-gap-4 py-5 py-xxl-3 my-auto flex-wrap' aria-labelledby='footer-section-title'>
+        <article className=' col-12 col-xxl-5 flex-lg-grow-1 d-flex flex-column justify-content-end pb-5'>
+          <h2 id='footer-section-title'>{footerString1[language]}</h2>
+          <p className=' fst-italic fw-light'>{taglineString[language]}</p>
+          <ul className='d-flex column-gap-3'>
+            <li>
+              <a aria-label='github' className='social-link' href='https://github.com/' target="_blank" rel='noreferrer'>
+                <GitHubIcon />
+              </a>
 
-      </Element>
+            </li>
+            <li>
+              <a aria-label='linkedIn' className='social-link' href='https://linkedin.com/' target="_blank" rel='noreferrer'>
+                <LinkedInIcon />
+              </a>
+
+            </li>
+          </ul>
+        </article>
+
+
+        <ul id='footer-contact-info' className=' d-flex justify-content-center align-items-center py-3 py-xxl-0 col-12 col-xxl-6 gap-5 flex-wrap'>
+          <li>
+            <button>
+              <MailIcon fontSize='large' />
+              <p>nvtcacenco.dev@gmail.com</p>
+            </button>
+          </li>
+          <li>
+            <button>
+              <SmartphoneIcon fontSize='large' />
+              <p>+45 22 32 45 48</p>
+            </button>
+          </li>
+        </ul>
+
+      </section>
+
     </footer>
+
+
   );
 }
 

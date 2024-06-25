@@ -1,17 +1,13 @@
-
-.about-section{
+.about-section {
     min-height: fit-content;
     background-color: var(--shade-clr-2);
-    
 }
 
-.about-container{
-    /* border: 2px solid red; */
+.about-container {
     min-height: 80svh;
-
 }
 
-.about-container div h2{
+.about-container div h3 {
     text-align: start;
     text-transform: uppercase;
     line-height: 1;
@@ -19,38 +15,37 @@
     font-size: var(--fs-3xl) !important;
 }
 
-#title-text-transform{
+#title-text-transform {
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
     column-gap: calc(10px + 0.5rem);
     color: transparent;
-    -webkit-text-stroke-width:  2px;
+    -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: var(--dark-clr);
-    
 }
 
-#title-text-dash{
+#title-text-dash {
     border-radius: 5px;
     height: 5px;
     background-color: var(--main-clr);
 }
 
-#personal-img{
+#personal-img {
     position: relative;
-    background-image: url('https://ik.imagekit.io/nvtcacenco/Portfolio/my_img2.webp?tr=w-1200');
-    background-position: center;
-    background-size: cover;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
     aspect-ratio: 1.3/1.7;
-    z-index: 3 ;
+    z-index: 3;
     background-color: var(--shade-clr-1);
     border-radius: 12px;
 }
 
-#img-box-style{
+#img-box-style {
     position: absolute;
-    
     width: 100%;
     height: 100%;
     background-color: var(--main-clr);
@@ -58,73 +53,33 @@
     top: 0;
     border-radius: 12px;
     z-index: 2;
-    /* box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12); */
 }
 
 
 
-#about-description-container{
+#about-description-container {
     margin-top: calc(36px + 1rem);
 }
 
 
-#about-description-container li{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 8px;
-    min-height: 70px;
-    overflow: hidden;
-    background-color: var(--light-clr);
-    transition: box-shadow 0.3s ease-in-out;
-}
-#about-description-container li:hover{
-    
-    box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.2), 0px 12px 17px 2px rgba(0, 0, 0, 0.14), 0px 5px 22px 4px rgba(0, 0, 0, 0.12);
-}
-#about-description-container li p{
-    text-align: start;
-    padding-inline: 1rem;
-}
 
-#about-description-container li div{
-   background-color: var(--shade-clr-3);
-   height: 100%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   position: relative;
-   overflow: hidden;
-}
 
-#about-description-container li div svg{
-    fill: var(--main-clr);
-    
- }
-#about-description-container li div::before{
-    position: absolute;
-    content: '';
-    width: 100%;
-    height: 200%;
-    background-color: var(--light-clr);
-    
-    bottom: -50%;
-    right: -83%;
-    transform: rotate(18deg);
- }
 
-#about-description{
+
+
+#about-description {
     text-align: start;
     margin: 0;
 }
 
-#contact-me-btn-container{
+#contact-me-btn-container {
     margin-top: calc(36px + 1rem);
 }
 
-#contact-me-btn{
+#contact-me-btn {
     border: 2px solid var(--main-clr);
     color: var(--light-clr);
+    text-transform: uppercase;
     background-color: transparent;
     overflow: hidden;
     position: relative;
@@ -133,12 +88,12 @@
     padding: 1rem;
 }
 
-#contact-me-btn p{
+#contact-me-btn p {
     margin: 0;
     position: relative;
 }
 
-#contact-me-btn::before{
+#contact-me-btn::before {
     position: absolute;
     content: '';
     width: 100%;
@@ -148,20 +103,21 @@
     background-color: var(--main-clr);
     transition: transform 0.3s ease-in-out;
 }
-#contact-me-btn:hover{
+
+#contact-me-btn:hover, #contact-me-btn:focus {
     color: var(--dark-clr);
 }
 
-#contact-me-btn:hover::before{
+#contact-me-btn:hover::before, #contact-me-btn:focus::before {
     transform: translateY(100%);
 }
 
-#about-description-arrow-container{
-    
+#about-description-arrow-container {
+
     position: relative;
 }
 
-#about-description-arrow{
+#about-description-arrow {
     position: absolute;
     left: -150%;
     top: -7.5rem;
@@ -172,63 +128,78 @@
     background-color: transparent;
     width: 150%;
     height: 110%;
-    
+
 }
 
-#about-me-heading{
+#about-me-heading {
     font-size: var(--fs-md);
     color: var(--main-clr);
     text-align: start;
 }
+
+
+
 @media (width < 1200px) {
-    #about-description{
+    #about-description {
         text-align: justify;
         font-size: var(--fs-base);
         font-weight: 300;
     }
 }
 
-@media (width < 1200px) and (orientation: portrait) {
-   
-}
+@media (width < 1200px) and (orientation: portrait) {}
 
 @media (width < 576px) {
-    
 
-    .about-container div h2{
+
+    .about-container div h3 {
         font-size: var(--fs-2xl) !important;
         text-align: center;
     }
 
-    #contact-me-btn{
+    #contact-me-btn {
         margin-inline: auto;
     }
 
-    #about-description{
+    #about-description {
         text-align: start;
-       
+
     }
 
-    #title-text-transform{
-       
+    #title-text-transform {
+
         color: var(--main-clr);
-        -webkit-text-stroke-width:  0px;
+        -webkit-text-stroke-width: 0px;
         -webkit-text-stroke-color: none;
-        
+
     }
 
-    #about-description-container li {
+    .about-bullet {
         width: calc(50% - 0.5rem);
-     }
-    
+    }
+
 }
 
-@media (width < 400px) {
-    .about-container div h2{
+@media (width < 450px) {
+    .about-container div h3 {
         font-size: var(--fs-lg) !important;
     }
-    #about-description-container ul li{
+
+    .about-bullet {
         width: 100%;
-        
+
     }
+}
+
+
+@media (prefers-reduced-motion) {
+
+    #contact-me-btn:hover, #contact-me-btn:focus {
+        color: var(--light-clr);
+    }
+    
+    #contact-me-btn:hover::before, #contact-me-btn:focus::before {
+        transform: none;
+    }
+  
 }

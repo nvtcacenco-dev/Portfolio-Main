@@ -11,6 +11,8 @@
 
   --light-clr: #fff;
   --main-clr: #81c3a3;
+  --main-accent-1: #81C2C3;
+  --main-accent-2: #81C382;
   --dark-clr: #222222;
   --faded-clr: #31313109;
   --shade-clr-1: #eee5dc;
@@ -147,8 +149,14 @@ button {
   scroll-margin-top: 1000px;
 }
 
-#about, #projects, #skills{
+#about, #skills{
   padding-block: var(--pb-lg) ;
   scroll-margin-top: 100px !important;
+  
+}
+
+#projects{
+  padding-block: var(--pb-lg) ;
+  scroll-margin-top: 25px !important;
   
 }

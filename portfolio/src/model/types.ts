@@ -9,6 +9,55 @@ export interface ComponentProps {
 
 //-------STRINGS-------
 
+
+//PROJECT STRINGS
+
+interface projectString {
+  stringName: string;
+  title: Record<Language, string>;
+  description: Record<Language, string>;
+  pictureURL: string;
+}
+
+export const projectStrings: projectString[] = [
+  {
+    stringName: 'Project 1',
+    title: {
+      [Language.ENGLISH]: "Webshop - TrendThread",
+      [Language.DANISH]: "Webshop - TrendThread",
+    },
+    description: {
+      [Language.ENGLISH]: "...",
+      [Language.DANISH]: "...",
+    },
+    pictureURL: 'https://ik.imagekit.io/nvtcacenco/Portfolio/project1/project_1_img_2.webp'
+  },
+  {
+    stringName: 'Project 2',
+    title: {
+      [Language.ENGLISH]: "Landing Page - Restaurant",
+      [Language.DANISH]: "Landing Page - Restaurant",
+    },
+    description: {
+      [Language.ENGLISH]: "...",
+      [Language.DANISH]: "...",
+    },
+    pictureURL: 'https://ik.imagekit.io/nvtcacenco/Portfolio/project2/project_2_img_1.webp'
+  },
+  {
+    stringName: 'Project 3',
+    title: {
+      [Language.ENGLISH]: "Landing Page - Business",
+      [Language.DANISH]: "Landing Page - Business",
+    },
+    description: {
+      [Language.ENGLISH]: "...",
+      [Language.DANISH]: "...",
+    },
+    pictureURL: 'https://ik.imagekit.io/nvtcacenco/Portfolio/project3/project_3_img_1.webp'
+  }
+]
+
 //NAV STRINGS
 interface navString {
   stringName: string;
